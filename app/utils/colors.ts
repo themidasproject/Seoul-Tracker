@@ -22,10 +22,17 @@ export function getTintColor(gradeColor: ReturnType<typeof getGradeColor>, opaci
   return `${gradeColor.background}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`
 }
 
-export function darkenColor(color: string, amount: number): string {
-  return color.replace(/^#/, '').match(/.{2}/g)?.map(c => {
-    const num = parseInt(c, 16)
-    return Math.max(0, num - Math.round(amount * 255)).toString(16).padStart(2, '0')
-  }).join('') || color
+export function darkenColor(color: string, amount: number = 0.1): string {
+  // Handle rgba colors
+  if (color.includes('rgba')) {
+    const [r, g, b, a] = color.match(/[\d.]+/g)?.map(Number) || [0, 0, 0, 0]
+    return `rgba(${Math.max(0, r - r * amount)}, ${Math.max(0, g - g * amount)}, ${Math.max(0, b - b * amount)}, ${a})`
+  }
+  
+  // Handle hex colors
+  const hex = color.replace('#', '')
+  const rgb = hex.match(/.{2}/g)?.map(c => parseInt(c, 16)) || [0, 0, 0]
+  const darkened = rgb.map(c => Math.max(0, Math.round(c * (1 - amount))))
+  return `#${darkened.map(c => c.toString(16).padStart(2, '0')).join('')}`
 }
 

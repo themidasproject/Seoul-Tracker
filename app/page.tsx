@@ -8,7 +8,7 @@ import SocialShare from './components/SocialShare'
 import KeySection from './components/KeySection'
 import { Company, Dimension, Grades } from './types'
 import { calculateAverageScore } from './utils'
-import { companies, dimensions, grades, descriptions } from './db/scoreData'
+import { companies, dimensions, grades } from './db/scoreData'
 import Header from './components/Header'
 import { colors } from './utils/colors'
 
@@ -49,48 +49,47 @@ export default function Tracker() {
         >
           At the <a href='https://www.gov.uk/government/topical-events/ai-safety-summit-2023' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2023 AI Safety Summit</a>, 16 leading tech organizations pledged to implement stringent safety measures for frontier AI models. This tracker assesses their progress across key areas of risk assessment, mitigation, and transparency, providing an objective view of AI safety commitment fulfillment.
         </motion.p>
-        <motion.div 
-          className="flex flex-col lg:flex-row gap-8 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <CompanyList 
-            companies={companies} 
-            selectedCompany={selectedCompany} 
-            onSelectCompany={setSelectedCompany}
-            averageScores={averageScores}
-          />
-          <AnimatePresence mode="wait">
-            {selectedCompany ? (
-              <motion.div
-                key={selectedCompany.id}
-                className="flex-grow"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <DimensionGrid 
-                  company={selectedCompany}
-                  dimensions={[...dimensions, { id: 'overall', name: 'Overall' }]}
-                  grades={grades[selectedCompany.id] || {}}
-                  descriptions={descriptions[selectedCompany.id] || {}}
-                  averageScore={averageScores[selectedCompany.id] || 0}
-                />
-              </motion.div>
-            ) : (
-              <motion.div 
-                className="flex-grow flex items-center justify-center bg-white border border-gray-300 rounded-lg p-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <p className="text-2xl" style={{ color: colors.lightText }}>Select a company to view its commitment progress</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        <div className="flex flex-col lg:flex-row gap-8 mb-8">
+          <div className="w-full lg:w-[400px] flex-shrink-0">
+            <CompanyList 
+              companies={companies} 
+              selectedCompany={selectedCompany} 
+              onSelectCompany={setSelectedCompany}
+              averageScores={averageScores}
+            />
+          </div>
+          <div className="flex-grow min-w-0">
+            <AnimatePresence mode="wait">
+              {selectedCompany ? (
+                <motion.div
+                  key={selectedCompany.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <DimensionGrid 
+                    company={selectedCompany}
+                    dimensions={[...dimensions, { id: 'overall', name: 'Overall' }]}
+                    grades={grades[selectedCompany.id] || {}}
+                    averageScore={averageScores[selectedCompany.id] || 0}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div 
+                  className="flex-grow flex items-center justify-center bg-white border border-gray-300 rounded-lg p-6 min-h-[300px]"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                >
+                  <p className="text-2xl text-center" style={{ color: colors.lightText }}>
+                    Select a company to view its commitment progress
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
         <KeySection />
         <SocialShare />
       </main>

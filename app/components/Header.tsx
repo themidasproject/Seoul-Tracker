@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { colors } from '../utils/colors'
 
@@ -10,18 +11,31 @@ export default function Header() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-500 text-xl font-bold">L</span>
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+          <a 
+            href="https://www.themidasproject.com" 
+            className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="rounded-full"
+              priority
+            />
+          </a>
+          
+          <h1 className="text-2xl lg:text-4xl font-bold text-center" style={{ color: colors.primary }}>
+            Seoul Summit AI Commitment Tracker
+          </h1>
+          
+          <div className="w-[50px] invisible lg:block">
+            {/* This is an empty div to balance the layout on desktop */}
           </div>
-          <span className="sr-only">Home</span>
-        </Link>
-        <h1 className="text-4xl font-bold text-center" style={{ color: colors.primary }}>
-          Seoul Summit AI Commitment Tracker
-        </h1>
-        <div className="w-10 h-10 invisible">
-          {/* This is an empty div to balance the layout */}
         </div>
       </div>
     </motion.header>
