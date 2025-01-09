@@ -91,7 +91,7 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
               onClick={() => onSelectCompany(company)}
               whileHover={{ 
                 backgroundColor: selectedCompany?.id === company.id ? colors.accent + '30' : darkenColor(backgroundColor, 0.1),
-                scale: 1.01,
+                scale: 0.99,
                 transition: { duration: 0.1 }
               }}
               variants={itemVariants}
