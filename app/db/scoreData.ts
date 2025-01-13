@@ -39,7 +39,7 @@ export const grades: Grades = {
  ibm: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  inflection: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  meta: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- microsoft: { 'risk-evaluations': 2, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 2 },
+ microsoft: { 'risk-evaluations': 2, 'risk-thresholds': 2, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 2 },
  mistral: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  naver: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  openai: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
