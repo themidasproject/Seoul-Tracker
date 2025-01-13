@@ -12,8 +12,7 @@ export const colors = {
 
 export function getGradeColor(grade: number): { text: string; background: string } {
   if (grade <= 1) return { text: '#c53030', background: colors.danger }
-  if (grade <= 2) return { text: '#c05621', background: '#fbd38d' }
-  if (grade <= 3) return { text: '#b7791f', background: colors.warning }
+  if (grade <= 2) return { text: '#b7791f', background: colors.warning }
   if (grade <= 4) return { text: '#2f855a', background: '#9ae6b4' }
   return { text: '#22543d', background: colors.success }
 }
