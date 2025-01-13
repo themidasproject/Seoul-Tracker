@@ -1,82 +1,70 @@
 import { Company, Dimension, Grades } from '../types'
 
+
 export const companies: Company[] = [
-  { id: 'amazon', name: 'Amazon' },
-  { id: 'anthropic', name: 'Anthropic' },
-  { id: 'cohere', name: 'Cohere' },
-  { id: 'google', name: 'Google' },
-  { id: 'g42', name: 'G42' },
-  { id: 'ibm', name: 'IBM' },
-  { id: 'inflection', name: 'Inflection AI' },
-  { id: 'meta', name: 'Meta' },
-  { id: 'microsoft', name: 'Microsoft' },
-  { id: 'mistral', name: 'Mistral AI' },
-  { id: 'naver', name: 'Naver' },
-  { id: 'openai', name: 'OpenAI' },
-  { id: 'samsung', name: 'Samsung Electronics' },
-  { id: 'tii', name: 'Technology Innovation Institute' },
-  { id: 'xai', name: 'xAI' },
-  { id: 'zhipu', name: 'Zhipu.ai' },
+ { id: 'amazon', name: 'Amazon' },
+ { id: 'anthropic', name: 'Anthropic' },
+ { id: 'cohere', name: 'Cohere' },
+ { id: 'google', name: 'Google' },
+ { id: 'g42', name: 'G42' },
+ { id: 'ibm', name: 'IBM' },
+ { id: 'inflection', name: 'Inflection AI' },
+ { id: 'meta', name: 'Meta' },
+ { id: 'microsoft', name: 'Microsoft' },
+ { id: 'mistral', name: 'Mistral AI' },
+ { id: 'naver', name: 'Naver' },
+ { id: 'openai', name: 'OpenAI' },
+ { id: 'samsung', name: 'Samsung Electronics' },
+ { id: 'tii', name: 'Technology Innovation Institute' },
+ { id: 'xai', name: 'xAI' },
+ { id: 'zhipu', name: 'Zhipu.ai' },
 ]
+
 
 export const dimensions: Dimension[] = [
-  { id: 'risk-evaluations', name: 'Risk Evaluation' },
-  { id: 'risk-thresholds', name: 'Risk Thresholds' },
-  { id: 'risk-mitigations', name: 'Risk Mitigations' },
-  { id: 'halting-procedures', name: 'Halting Procedures' },
-  { id: 'safety-investment', name: 'Safety Investment' }
+ { id: 'risk-evaluations', name: 'Risk Evaluation' },
+ { id: 'risk-thresholds', name: 'Risk Thresholds' },
+ { id: 'risk-mitigations', name: 'Risk Mitigations' },
+ { id: 'halting-procedures', name: 'Halting Procedures' },
+ { id: 'safety-investment', name: 'Safety Investment' }
 ]
 
+
 export const grades: Grades = {
-  amazon: { 'risk-evaluations': 2, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 3, 'safety-investment': 2 },
-  anthropic: { 'risk-evaluations': 3, 'risk-thresholds': 4, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 3 },
-  cohere: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  google: { 'risk-evaluations': 4, 'risk-thresholds': 3, 'risk-mitigations': 4, 'halting-procedures': 3, 'safety-investment': 4 },
-  g42: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  ibm: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  inflection: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  meta: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  microsoft: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  mistral: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  naver: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  openai: { 'risk-evaluations': 3, 'risk-thresholds': 4, 'risk-mitigations': 3, 'halting-procedures': 3, 'safety-investment': 4 },
-  samsung: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  tii: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  xai: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
-  zhipu: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ amazon: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ anthropic: { 'risk-evaluations': 4, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 5, 'safety-investment': 4 },
+ cohere: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ google: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
+ g42: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ ibm: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ inflection: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ meta: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ microsoft: { 'risk-evaluations': 2, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 2 },
+ mistral: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ naver: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ openai: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
+ samsung: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ tii: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ xai: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ zhipu: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
 }
+
 
 export const companyDescriptions: Record<string, string> = {
-  amazon: "Amazon has made moderate progress in implementing AI safety measures, particularly in risk assessment and mitigation. Their <a href='https://www.aboutamazon.com/news/ai/amazons-approach-to-responsible-ai' target='_blank' rel='noopener noreferrer'>responsible AI guidelines</a> outline key practices, though implementation details remain limited.",
-  
-  anthropic: "Anthropic demonstrates strong commitment to AI safety through comprehensive risk assessment and mitigation strategies. Their <a href='https://www.anthropic.com/news/anthropic-constitutional-ai' target='_blank' rel='noopener noreferrer'>Constitutional AI approach</a> and active involvement in AI safety research show industry-leading practices.",
-  
-  cohere: "Cohere has not yet publicly detailed their AI safety implementation measures. While they signed the commitment, specific actions and progress remain unclear. Their public communications focus on commercial applications rather than safety measures.",
-  
-  google: "Google shows strong implementation of AI safety measures across all categories. Their <a href='https://ai.google/responsibility/principles/' target='_blank' rel='noopener noreferrer'>AI Principles</a> and regular risk assessments demonstrate comprehensive safety practices, though some specific implementation details remain private.",
-  
-  g42: "G42's AI safety measures and implementation progress are not well documented publicly. While they have signed international commitments, there is limited transparency about their specific safety practices and risk assessment procedures.",
-  
-  ibm: "IBM has established general AI ethics principles but provides limited public information about specific safety implementation measures. Their <a href='https://www.ibm.com/artificial-intelligence/ethics' target='_blank' rel='noopener noreferrer'>AI Ethics Board</a> oversees development, though detailed safety protocols are not publicly available.",
-  
-  inflection: "Inflection AI has made public commitments to AI safety but has not extensively detailed their implementation measures. Their approach to risk assessment and mitigation strategies remains largely undisclosed.",
-  
-  meta: "Meta has developed AI safety guidelines and participates in industry collaborations, but provides limited public information about specific implementation measures. Their <a href='https://ai.meta.com/responsible-ai/' target='_blank' rel='noopener noreferrer'>Responsible AI practices</a> outline general principles.",
-  
-  microsoft: "Microsoft has established AI safety principles and collaborates on industry standards. Their <a href='https://www.microsoft.com/en-us/ai/responsible-ai' target='_blank' rel='noopener noreferrer'>Responsible AI Standards</a> provide a framework, though specific implementation details of safety measures are not fully public.",
-  
-  mistral: "Mistral AI has made initial commitments to AI safety but has not yet published detailed information about their implementation measures. Their approach to risk assessment and safety protocols remains to be fully documented.",
-  
-  naver: "Naver's AI safety implementation measures are not extensively documented in public sources. While they participate in international discussions, specific details about their safety practices and risk assessment procedures are limited.",
-  
-  openai: "OpenAI maintains strong safety measures across their AI development pipeline. Their <a href='https://openai.com/safety' target='_blank' rel='noopener noreferrer'>safety practices</a> include comprehensive risk assessment, clear safety thresholds, and active research in AI alignment. They regularly publish updates on safety practices and research findings.",
-  
-  samsung: "Samsung Electronics has made general commitments to AI ethics but provides limited public information about specific safety implementation measures. Their approach to AI risk assessment and mitigation strategies is not extensively documented.",
-  
-  tii: "Technology Innovation Institute's AI safety measures and implementation progress are not well documented publicly. While they participate in international initiatives, specific details about their safety practices remain limited.",
-  
-  xai: "xAI has made initial commitments to AI safety but has not yet published detailed information about their implementation measures. Their specific approach to risk assessment and safety protocols remains largely undocumented.",
-  
-  zhipu: "Zhipu.ai's AI safety implementation measures are not extensively documented in public sources. While they have signed international commitments, specific details about their safety practices and risk assessment procedures remain limited."
+ amazon: "Amazon has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  anthropic: "Anthropic released the first major “red line” risk evaluation policy among top AI developers, known as their <a href='https://www.anthropic.com/news/anthropics-responsible-scaling-policy' target='_blank' rel='noopener noreferrer'>responsible scaling policy</a>. They conduct risk evaluations at least every six months. For the upcoming tier of risks, ASL-3, they’ve specified in abstract terms risk thresholds for (1) model autonomy and (2) chemical, biological, radiological, and nuclear risks. Reaching these capability thresholds will necessitate the implementation of new security and deployment mitigations. These mitigation standards have also been described in abstract terms. Anthropic has made an affirmative commitment to pause deployment and training if these thresholds are reached without the required mitigations in place. They’ve already published one update to the policy, and appear invested in maintaining and adhering to the commitment. ",
+  cohere: "Cohere has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  google: "Google’s <a href='https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf' target='_blank' rel='noopener noreferrer'>Frontier Safety Framework</a> commits the organization to conduct risk evaluations on a regular schedule for threats relating to model autonomy, biosecurity, cybersecurity, and machine learning research and development. They have pre-specified risk thresholds for each category, and also specified four tiers of mitigations — although these mitigations are not currently required to be implemented when reaching the aforementioned risk thresholds.  Their policy includes a vague and noncommittal announcement that they will pause deployment or development when risk thresholds are met without adequate mitigations in place.",
+  g42: "G42 has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  ibm: "IBM has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  inflection: "Inflection has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  meta: "Meta has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  microsoft: "Microsoft has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments. They have made a vague announcement that, together with OpenAI, they have \“defined capability thresholds that act as a trigger to review models in advance of their first release or downstream deployment. The scope of a review, through our joint Microsoft-OpenAI Deployment Safety Board (DSB), includes model capability discovery.\” However, they have provided no public description of these practices, and there is one reported case of a model being released without the required review.",
+  mistral: "Mistral AI has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  naver: "Naver has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  openai: "OpenAI’s <a href='https://cdn.openai.com/openai-preparedness-framework-beta.pdf' target='_blank' rel='noopener noreferrer'>preparedness framework</a> includes a commitment to conduct continual risk evaluation for cybersecurity, model autonomy, persuasion, and chemical, biological, radiological, and nuclear risks. They have sketched out, and described in vague terms, four risk levels for each category and committed not to deploy high-risk models (externally, that is) until security and safety mitigations have been put in place, although they haven’t described those mitigations in detail. They have struggled to continually invest in this framework, including releasing no updates since the original publication, not releasing risk scorecards on time for new models, and reportedly rushing safety teams through the risk evaluation process.",
+  samsung: "Samsung has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  tii: "Technology Innovation Institute has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  xai: "xAI has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
+  zhipu: "Zhipu.ai has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments."
 }
-
