@@ -32,7 +32,7 @@ export const dimensions: Dimension[] = [
 
 export const grades: Grades = {
  amazon: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- anthropic: { 'risk-evaluations': 4, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 5, 'safety-investment': 4 },
+ anthropic: { 'risk-evaluations': 4, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 4 },
  cohere: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  google: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
  g42: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
