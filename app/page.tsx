@@ -47,7 +47,7 @@ export default function Tracker() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          At the <a href='https://www.gov.uk/government/topical-events/ai-safety-summit-2023' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2024 AI Safety Summit</a> in Seoul, 16 leading tech organizations pledged to implement "red line" risk evaluation policies for frontier AI models. This tracker assesses their progress across the five key domains of the commitment.
+          At the <a href='https://www.gov.uk/government/topical-events/ai-safety-summit-2023' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2024 AI Safety Summit</a> in Seoul, sixteen leading tech organizations pledged to implement "red line" risk evaluation policies for frontier AI models. A year has passed, and very few have followed through. This tracker assesses their progress across the five key components of the Seoul commitment.
         </motion.p>
         <div className="flex flex-col lg:flex-row gap-8 mb-8">
           <div className="w-full lg:w-[400px] flex-shrink-0">
