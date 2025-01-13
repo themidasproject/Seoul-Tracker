@@ -83,9 +83,9 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
   }
 
   const getStatusIcon = (score: number) => {
-    if (score > 3) {
+    if (score => 2) {
       return <CheckCircle size={16} className="mr-2" style={{ color: colors.success }} />
-    } else if (score > 2) {
+    } else if (score > 1) {
       return <AlertCircle size={16} className="mr-2" style={{ color: colors.warning }} />
     } else if (score === 1) {
       return <X size={16} className="mr-2" style={{ color: colors.danger }} />
