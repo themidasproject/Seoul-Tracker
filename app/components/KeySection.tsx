@@ -17,7 +17,7 @@ const riskCategories = [
   {
     id: 'risk-mitigations',
     name: 'Risk Mitigations',
-    description: 'Companies must "articulate how risk mitigations will be identified and implemented, including safety and security-related risk mitigations." This includes detailed strategies to maintain risks within defined thresholds through: (1) modification of system behaviors, (2) security controls for unreleased model weights, and (3) clear implementation procedures.'
+    description: 'Companies must "articulate how risk mitigations will be identified and implemented, including safety and security-related risk mitigations." These mitigations include: (1) modification of system behaviors, and (2) robust security controls for unreleased model weights.'
   },
   {
     id: 'halting-procedures',
@@ -27,7 +27,7 @@ const riskCategories = [
   {
     id: 'safety-investment',
     name: 'Safety Investment',
-    description: 'Companies must "continually invest in advancing their ability to implement commitments, including risk assessment and identification, thresholds definition, and mitigation effectiveness." This requires: (1) continuous monitoring of mitigation adequacy, (2) identification of new mitigations, and (3) incorporation of emerging best practices.'
+    description: 'Companies must "continually invest in advancing their ability to implement commitments 1-4, including risk assessment and identification, thresholds definition, and mitigation effectiveness." This requires: (1) continuous monitoring of mitigation adequacy, (2) identification of new mitigations, and (3) incorporation of emerging best practices, international standards, and science on AI risk identification, assessment, and mitigations.'
   }
 ]
 
@@ -74,7 +74,7 @@ export default function KeySection() {
               {/* Introduction */}
               <div>
                 <p className="text-gray-600 leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
-                  This tracker monitors implementation of the <a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener noreferrer">Frontier AI Safety Commitments</a> made at the 2023 AI Safety Summit in Seoul. The five categories below correspond directly to the five components of Outcome 1 as described in the commitment document. These commitments represent public promises made by leading AI companies to world governments and the global community, establishing clear expectations for transparency and responsible development of frontier AI systems.
+                  This tracker monitors implementation of the <a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener noreferrer">Frontier AI Safety Commitments</a> made at the 2024 AI Safety Summit in Seoul. The five categories below correspond directly to the five components of Outcome 1 as described in the commitment document. These commitments represent public promises made by leading AI companies to world governments and the global community, establishing expectations for transparency and responsible development of frontier AI systems.
                 </p>
               </div>
 
@@ -110,15 +110,12 @@ export default function KeySection() {
                   <p>
                     This analysis is based on internal research conducted by <a href="https://www.themidasproject.com" target="_blank" rel="noopener noreferrer">The Midas Project</a> using publicly available sources, including company announcements and third-party reporting. Our research cannot be comprehensive, and we do not have insight into internal practices at these companies. Therefore, this tracker should be viewed as an estimate based on public information, not a definitive assessment.
                   </p>
-                  <p>
-                    Scores are based on publicly available information as required by Outcome 3 of the commitment, which states companies "will provide public transparency on the implementation." Even if practices are implemented privately, lack of public disclosure represents a failure to fully implement the commitment as originally agreed upon.
-                  </p>
                 </div>
               </div>
 
               {/* Footer Note */}
               <p className="text-xs text-gray-500 italic">
-                This analysis focuses specifically on Outcome 1 of the Seoul AI Safety Summit commitments, which details requirements for risk identification, evaluation, and management.
+                This website was originally published by The Midas Project in January 2025, and is subject to continual updates as new details emerge. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
               </p>
             </div>
           </motion.div>
