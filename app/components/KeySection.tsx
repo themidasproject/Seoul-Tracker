@@ -114,7 +114,7 @@ export default function KeySection() {
               </div>
 
               {/* Footer Note */}
-              <p className="text-xs text-gray-500 italic">
+              <p className="text-xs text-gray-500 italic [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
                 This website was originally published by The Midas Project in January 2025, and is subject to continual updates as new details emerge. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
               </p>
             </div>
