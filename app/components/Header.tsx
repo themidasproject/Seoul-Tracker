@@ -30,7 +30,7 @@ export default function Header() {
           </a>
           
           <h1 className="text-2xl lg:text-4xl font-bold text-center" style={{ color: colors.primary }}>
-            Seoul Summit AI Commitment Tracker
+            "Red Line" AI Risk Evaluation Tracker
           </h1>
           
           <div className="w-[50px] invisible lg:block">
