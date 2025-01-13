@@ -75,9 +75,10 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.4 }}
+        className="bg-gray-50 rounded-lg p-4 border border-gray-200 max-w-3xl mx-auto"
       >
         <motion.p 
-          className="text-gray-600 leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline max-w-3xl mx-auto"
+          className="text-gray-600 text-sm leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline"
           dangerouslySetInnerHTML={{ __html: companyDescriptions[company.id] }}
         />
       </motion.div>
