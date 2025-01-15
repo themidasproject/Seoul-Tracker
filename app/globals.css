@@ -10,6 +10,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .hover-card-overlay {
+    @apply absolute inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 text-white opacity-0 transition-opacity duration-200;
+  }
+
+  .hover-card:hover .hover-card-overlay {
+    @apply opacity-100;
+  }
+
+  .dimension-card {
+    @apply relative border border-gray-300 rounded-lg overflow-hidden shadow-sm transition-all duration-200;
+  }
+
+  .dimension-card:hover {
+    @apply -translate-y-1 shadow-md;
+  }
 }
 
 @layer base {

@@ -50,6 +50,59 @@ export const grades: Grades = {
 }
 
 
+export const dimensionDescriptions: Record<string, Record<string, string>> = {
+  'anthropic': {
+    'risk-evaluations': `
+      <p>Anthropic has implemented comprehensive risk evaluation processes:</p>
+      <ul>
+        <li>Published detailed <a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy" target="_blank">responsible scaling policy</a></li>
+        <li>Conducts evaluations at least every six months</li>
+        <li>Includes both internal and external assessments</li>
+        <li>Focuses on model capabilities and deployment contexts</li>
+      </ul>
+      <p>Areas for improvement:</p>
+      <ul>
+        <li>More transparency around evaluation methodologies</li>
+        <li>Regular public updates on evaluation findings</li>
+      </ul>
+    `,
+    'risk-thresholds': `
+      <p>Anthropic has defined abstract thresholds for:</p>
+      <ul>
+        <li>Model autonomy risks</li>
+        <li>Chemical, biological, radiological, and nuclear risks</li>
+      </ul>
+      <p>Read more in their <a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy" target="_blank">scaling policy document</a>.</p>
+    `,
+    // ... other dimensions
+  },
+  'openai': {
+    'risk-evaluations': `
+      <p>OpenAI's approach includes:</p>
+      <ul>
+        <li>Published <a href="https://cdn.openai.com/openai-preparedness-framework-beta.pdf" target="_blank">preparedness framework</a></li>
+        <li>Continuous risk evaluation process</li>
+        <li>Focus on specific risk categories:</li>
+        <ul>
+          <li>Cybersecurity</li>
+          <li>Model autonomy</li>
+          <li>Persuasion capabilities</li>
+          <li>CBRN risks</li>
+        </ul>
+      </ul>
+      <p>Notable concerns:</p>
+      <ul>
+        <li>Missed deadlines for risk scorecards</li>
+        <li>Reports of rushed safety evaluations</li>
+        <li>No updates to framework since initial publication</li>
+      </ul>
+    `,
+    // ... other dimensions
+  },
+  // ... other companies
+}
+
+
 export const companyDescriptions: Record<string, string> = {
  amazon: "Amazon has not publicly implemented a “red line” risk evaluation policy that meets the standards of the Seoul commitments.",
   anthropic: "Anthropic released the first major “red line” risk evaluation policy among top AI developers, known as their <a href='https://www.anthropic.com/news/anthropics-responsible-scaling-policy' target='_blank' rel='noopener noreferrer'>responsible scaling policy</a>. They conduct risk evaluations at least every six months. For the upcoming tier of risks, they’ve specified (in abstract terms) risk thresholds for (1) model autonomy and (2) chemical, biological, radiological, and nuclear risks. Reaching these capability thresholds will necessitate the implementation of new security and deployment mitigations. These mitigation standards have also been described in abstract terms. Anthropic has made an affirmative commitment to pause deployment and training if these thresholds are reached without the required mitigations in place. They’ve already published one update to the policy, and appear invested in maintaining and adhering to the commitment. ",
