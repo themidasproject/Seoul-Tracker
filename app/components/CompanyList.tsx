@@ -125,7 +125,7 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
         <div
           ref={scrollRef}
           className="overflow-y-auto"
-          style={{ maxHeight: '40vh' }}
+          style={{ height: '375px' }}
           onScroll={checkScroll}
         >
           {sortedCompanies.map((company) => {
