@@ -268,18 +268,19 @@ function CompanyDropdown({
       className={`
         absolute
         top-full
-        left-1/2
-        -translate-x-1/2
+        right-[-2rem]
+        -ml-12
         mt-1
         py-2
+        px-2
         bg-white
         rounded-lg
         shadow-lg
         border
         border-gray-200
         z-[1000]
+        min-w-[120px]
         max-w-[calc(100vw-2rem)]
-        w-auto
         whitespace-normal
         break-words
         overflow-hidden
