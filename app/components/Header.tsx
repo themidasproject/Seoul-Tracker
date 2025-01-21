@@ -222,6 +222,11 @@ function HoverDropdown({
 }) {
   const [hovered, setHovered] = useState(false)
 
+  const handleCompanySelect = (company: Company) => {
+    setHovered(false)  // Close the dropdown
+    onSelectCompany?.(company)  // Call the original handler
+  }
+
   return (
     <div
       className="relative"
@@ -242,7 +247,7 @@ function HoverDropdown({
         {hovered && (
           <CompanyDropdown
             companies={companies}
-            onSelect={company => onSelectCompany?.(company)}
+            onSelect={handleCompanySelect}  // Use our new handler
             highlight={highlight}
             danger={danger}
           />
