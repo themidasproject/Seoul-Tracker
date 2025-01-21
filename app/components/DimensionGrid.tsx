@@ -55,7 +55,7 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
 
   return (
     <motion.div 
-      className="w-full bg-background border border-gray-300 rounded-lg p-4 sm:p-6 relative flex flex-col overflow-hidden"
+      className="w-full bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl p-6 relative flex flex-col overflow-hidden shadow-sm"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}

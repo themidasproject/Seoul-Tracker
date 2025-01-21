@@ -43,7 +43,7 @@ export default function KeySection() {
   return (
     <motion.div 
       onClick={handleClick}
-      className={`bg-white border border-gray-300 rounded-lg px-6 pt-6 ${isExpanded ? 'pb-6' : 'pb-6'} mt-8 ${!isExpanded && 'cursor-pointer'}`}
+      className={`bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl px-6 pt-6 ${isExpanded ? 'pb-6' : 'pb-6'} mt-8 shadow-sm`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}

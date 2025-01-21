@@ -2,33 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .hover-card-overlay {
-    @apply absolute inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 text-white opacity-0 transition-opacity duration-200;
-  }
-
-  .hover-card:hover .hover-card-overlay {
-    @apply opacity-100;
-  }
-
-  .dimension-card {
-    @apply relative border border-gray-300 rounded-lg overflow-hidden shadow-sm transition-all duration-200;
-  }
-
-  .dimension-card:hover {
-    @apply -translate-y-1 shadow-md;
-  }
-}
-
 @layer base {
+  body {
+    font-family: "Charter", "Georgia", serif;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -106,5 +83,15 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }

@@ -95,12 +95,12 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
 
   return (
     <motion.div 
-      className="w-full bg-white border border-gray-300 rounded-lg overflow-hidden flex flex-col shadow-sm"
+      className="w-full bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <h2 className="text-xl font-bold p-4 text-center border-b border-gray-200">
+      <h2 className="text-xl font-bold p-4 text-center border-b border-gray-100 bg-gray-50/50">
         Companies
       </h2>
       
@@ -125,7 +125,7 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
         <div
           ref={scrollRef}
           className="overflow-y-auto"
-          style={{ height: '375px' }}
+          style={{ height: '400px' }}
           onScroll={checkScroll}
         >
           {sortedCompanies.map((company) => {

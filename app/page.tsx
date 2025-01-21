@@ -27,27 +27,22 @@ export default function Tracker() {
   }, [])
 
   return (
-    <motion.div 
-      className="min-h-screen text-gray-900 font-serif"
-      style={{ 
-        background: `linear-gradient(135deg, ${colors.background} 0%, #ffffff 100%)`,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1h98v98H1V1zm0 0h98v98H1V1zm0 0h98v98H1V1zm0 0h98v98H1V1z' fill='none' stroke='%23718096' stroke-width='0.5' stroke-opacity='0.05'/%3E%3C/svg%3E")`,
-        backgroundSize: '20px 20px',
-      }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Header />
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50">
+      <Header 
+        onSelectCompany={setSelectedCompany}
+        companies={companies}
+        grades={grades}
+      />
+      
+      <main className="container-width py-6 sm:py-8">
         <motion.p 
-          className="text-xl text-center mb-8 max-w-3xl mx-auto"
+          className="text-lg text-center mb-6 max-w-4xl mx-auto px-4"
           style={{ color: colors.text }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          At the <a href='https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2024 AI Safety Summit</a> in Seoul, South Korea, sixteen leading tech organizations pledged to implement "red line" risk evaluation policies for frontier AI models. A year has passed, and very few have followed through. This tracker assesses their progress across the five key components of the Seoul commitment.
+          At the <a href='https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2024 AI Safety Summit</a> in Seoul, South Korea, sixteen leading tech organizations pledged to implement "red line" risk evaluation policies for frontier AI models. A year has passed, and very few have followed through. This tracker assesses their progress across the five key components.
         </motion.p>
         <div className="flex flex-col lg:flex-row gap-8 mb-8">
           <div className="w-full lg:w-[400px] flex-shrink-0">
@@ -93,7 +88,7 @@ export default function Tracker() {
         <KeySection />
         <SocialShare />
       </main>
-    </motion.div>
+    </div>
   )
 }
 
