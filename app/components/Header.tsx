@@ -120,7 +120,7 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
               <motion.div 
                 className="flex items-center space-x-2 text-sm font-medium text-gray-600"
                 initial={{ opacity: 0, x: -20 }}
@@ -191,9 +191,9 @@ function Stat({
         <span 
           className={`
             text-xl sm:text-2xl font-bold
-            ${highlight ? 'text-green-600' :
-              warning ? 'text-amber-500' :
-              danger ? 'text-red-600' :
+            ${highlight ? 'text-green-500' :
+              warning ? 'text-amber-400' :
+              danger ? 'text-red-500' :
               'text-gray-900'
             }
           `}
@@ -206,9 +206,9 @@ function Stat({
             className={`
               ml-1 transition-transform
               ${isOpen ? 'opacity-70 rotate-180 translate-y-[1px]' : 'opacity-40'}
-              ${highlight ? 'text-green-600' : 
-                warning ? 'text-amber-500' :
-                danger ? 'text-red-600' : 
+              ${highlight ? 'text-green-500' :
+                warning ? 'text-amber-400' :
+                danger ? 'text-red-500' :
                 'text-gray-500'}
             `}
           />
