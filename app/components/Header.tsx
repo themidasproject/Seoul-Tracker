@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { colors } from '../utils/colors'
 import { AlertCircle, ChevronDown } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Company } from '../types'
 import { policyStatuses } from '../db/scoreData'
 
@@ -113,26 +113,40 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
             </motion.p>
           </div>
 
-          {/* Stats Bar */}
-          <motion.div 
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-3 sm:p-4 bg-black/5 backdrop-blur-md rounded-2xl w-full sm:w-auto"
+          {/* 
+            Stats Container:
+            - Deadline on its own row (on mobile)
+            - The three stats in a shared row below it
+            - On desktop, they appear side by side
+          */}
+          <motion.div
+            className="
+              flex flex-col sm:flex-row gap-4 p-3 sm:p-5
+              bg-black/5 backdrop-blur-md rounded-2xl
+              w-full sm:w-auto
+              mx-auto sm:mx-0
+              max-w-xl
+            "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-              <motion.div 
-                className="flex items-center space-x-2 text-sm font-medium text-gray-600"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <AlertCircle size={14} className="text-amber-600 shrink-0" />
-                <span className="whitespace-nowrap">Deadline: Feb 10, 2025</span>
-              </motion.div>
+            {/* Deadline Row (centered on mobile) */}
+            <motion.div
+              className="flex items-center justify-center sm:justify-start space-x-2 text-sm font-medium text-gray-600"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <AlertCircle size={14} className="text-amber-600 shrink-0" />
+              <span className="whitespace-nowrap">Deadline: Feb 10, 2025</span>
+            </motion.div>
 
-              <div className="hidden sm:block h-4 w-px bg-gray-300" />
+            {/* A horizontal line, only on desktop, before the 3 stats */}
+            <div className="hidden sm:block w-full border-t border-gray-300 my-2" />
 
+            {/* Stats row: all in one row on mobile, but with more space */}
+            <div className="flex flex-row items-center justify-center space-x-6">
               <HoverOrTapStat
                 label="Fulfilled"
                 number={fulfilledCount.toString()}
@@ -141,6 +155,7 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
                 onSelectCompany={onSelectCompany}
               />
 
+              {/* Vertical line divider only on desktop */}
               <div className="hidden sm:block h-4 w-px bg-gray-300" />
 
               <HoverOrTapStat
@@ -151,6 +166,7 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
                 onSelectCompany={onSelectCompany}
               />
 
+              {/* Vertical line divider only on desktop */}
               <div className="hidden sm:block h-4 w-px bg-gray-300" />
 
               <HoverOrTapStat
@@ -222,7 +238,7 @@ function Stat({
 /**
  * Combined hover + tap approach:
  * - On desktop (non-touch), open/close via mouse enter/leave
- * - On touch devices, open/close via tap
+ * - On touch devices, open/close via tap, with outside-click detection
  */
 function HoverOrTapStat({
   label,
@@ -241,30 +257,43 @@ function HoverOrTapStat({
   companies: Company[]
   onSelectCompany?: (company: Company) => void
 }) {
-  // Detect if it's a touch-capable device
+  const containerRef = useRef<HTMLDivElement>(null)
   const [isTouch, setIsTouch] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    // If 'ontouchstart' in window or (maxTouchPoints > 0),
-    // we consider it a touch device
+    // Identify touch devices
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
       setIsTouch(true)
     }
   }, [])
 
-  const [open, setOpen] = useState(false)
-
   const openDropdown = () => setOpen(true)
   const closeDropdown = () => setOpen(false)
   const toggleDropdown = () => setOpen(o => !o)
 
+  // Close dropdown if user clicks outside the hovering area
+  useEffect(() => {
+    if (!open) return
+
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        closeDropdown()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [open])
+
   return (
     <div
+      ref={containerRef}
       className="relative"
-      // Hover only if not touch
+      // Hover (desktop)
       onMouseEnter={() => !isTouch && openDropdown()}
       onMouseLeave={() => !isTouch && closeDropdown()}
-      // Tap if touch
+      // Tap (mobile)
       onClick={() => isTouch && toggleDropdown()}
     >
       <Stat 
@@ -284,8 +313,8 @@ function HoverOrTapStat({
             warning={warning}
             danger={danger}
             onSelect={(company) => {
-              closeDropdown()
-              onSelectCompany?.(company)
+              closeDropdown();
+              onSelectCompany?.(company);
             }}
           />
         )}
@@ -294,12 +323,12 @@ function HoverOrTapStat({
   )
 }
 
-function CompanyDropdown({ 
-  companies, 
-  onSelect, 
+function CompanyDropdown({
+  companies,
+  onSelect,
   highlight,
   warning,
-  danger 
+  danger,
 }: {
   companies: Company[];
   onSelect: (company: Company) => void;
@@ -312,9 +341,7 @@ function CompanyDropdown({
       className={`
         absolute
         top-full
-        // On mobile, center under the stat:
-        left-1/2 -translate-x-1/2
-        // On desktop, revert to prior alignment:
+        left-0
         sm:left-auto sm:translate-x-0 sm:right-[-2rem]
         mt-1
         py-2
@@ -325,9 +352,10 @@ function CompanyDropdown({
         border
         border-gray-200
         z-[1000]
-        // Let it auto-size to content, no scrollbar:
         whitespace-normal
         break-words
+        max-w-[90vw]
+        sm:max-w-none
       `}
       initial={{ opacity: 0, y: -6 }}
       animate={{ opacity: 1, y: 0 }}

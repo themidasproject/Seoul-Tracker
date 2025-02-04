@@ -155,7 +155,7 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
 
   return (
     <motion.div 
-      className="w-full bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm"
+      className="w-full max-w-xl mx-auto bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
