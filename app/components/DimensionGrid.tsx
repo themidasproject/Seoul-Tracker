@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Company, Dimension } from '../types'
 import { getGradeColor, getTintColor, darkenColor, colors } from '../utils/colors'
 import { companyDescriptions, dimensionDescriptions } from '../db/scoreData'
-import { Info, X } from 'lucide-react'
+import { Info, X, FileText } from 'lucide-react'
 
 interface DimensionGridProps {
   company: Company
@@ -14,6 +14,17 @@ interface DimensionGridProps {
 
 export default function DimensionGrid({ company, dimensions, grades, averageScore }: DimensionGridProps) {
   const [selectedDimension, setSelectedDimension] = useState<string | null>(null)
+
+  // Mapping for policy links based on company.id:
+  // Anthropic -> RSP, Google -> FSF, and OpenAI -> PF.
+  const policyLinks: Record<string, { label: string; url: string }> = {
+    anthropic: { label: 'Read the policy', url: 'https://assets.anthropic.com/m/24a47b00f10301cd/original/Anthropic-Responsible-Scaling-Policy-2024-10-15.pdf' },
+    google: { label: 'Read the policy', url: 'https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf' },
+    openai: { label: 'Read the policy', url: 'https://cdn.openai.com/openai-preparedness-framework-beta.pdf' },
+    meta: { label: 'Read the policy', url: 'https://ai.meta.com/static-resource/meta-frontier-ai-framework/' },
+    naver: { label: 'Read the policy', url: 'https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf' }
+  }
+  const policy = policyLinks[company.id.toLowerCase()]
 
   const getScoreDescription = (score: number) => {
     switch(score) {
@@ -201,6 +212,19 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Subtle "Read the policy" button for Anthropic, Google, and OpenAI in the top right corner */}
+      {policy && (
+        <a 
+          href={policy.url} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="absolute top-2 right-2 bg-white/80 px-2 py-1 rounded text-xs text-gray-500 hover:text-gray-800 transition-colors flex items-center"
+        >
+          <FileText size={14} className="mr-1" />
+          {policy.label}
+        </a>
+      )}
     </motion.div>
   )
 }

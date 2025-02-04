@@ -34,19 +34,16 @@ const riskCategories = [
 export default function KeySection() {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const handleClick = (e: React.MouseEvent) => {
-    if (!isExpanded) {
-      setIsExpanded(true)
-    }
-  }
-
   return (
     <motion.div 
-      onClick={handleClick}
+      onClick={() => !isExpanded && setIsExpanded(true)}
       className={`bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl px-6 pt-6 ${isExpanded ? 'pb-6' : 'pb-6'} mt-8 shadow-sm`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      role="button"
+      aria-expanded={isExpanded}
+      aria-controls="methodology-content"
     >
       <div
         onClick={(e) => {
@@ -63,6 +60,7 @@ export default function KeySection() {
       <AnimatePresence>
         {isExpanded && (
           <motion.div
+            id="methodology-content"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -115,7 +113,7 @@ export default function KeySection() {
 
               {/* Footer Note */}
               <p className="text-xs text-gray-500 italic [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
-                This website was originally published by The Midas Project in January 2025, and is subject to continual updates as new details emerge. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
+                This website was originally published by The Midas Project on February 10th, 2025, and is subject to continual updates as new details emerge. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
               </p>
             </div>
           </motion.div>

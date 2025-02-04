@@ -32,17 +32,17 @@ export const dimensions: Dimension[] = [
 
 export const grades: Grades = {
  amazon: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- anthropic: { 'risk-evaluations': 4, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 4 },
+ anthropic: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 4 },
  cohere: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  google: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
  g42: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  ibm: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  inflection: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- meta: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ meta: { 'risk-evaluations': 2, 'risk-thresholds': 2, 'risk-mitigations': 1, 'halting-procedures': 3, 'safety-investment': 2 },
  microsoft: { 'risk-evaluations': 2, 'risk-thresholds': 2, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 2 },
  mistral: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- naver: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- openai: { 'risk-evaluations': 2, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
+ naver: { 'risk-evaluations': 3, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 2, 'safety-investment': 2 },
+ openai: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
  samsung: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  tii: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  xai: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
@@ -61,17 +61,19 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
   'anthropic': {
     'risk-evaluations': `
       <p><span style="color: #16a34a;">✓ Commits to conduct risk evaluations at least every six months or every 4x in effective compute</span></p>
-      <p><span style="color: #16a34a;">✓ Uses burden of proof that assumes models are unsafe unless proven safe</span></p>
+      <p><span style="color: #16a34a;">✓ Assumes models are unsafe unless proven safe</span></p>
       <p><span style="color: #16a34a;">✓ Evaluates efficacy of mitigations after implementation</span></p>
       <p><span style="color: #16a34a;">✓ Has published detailed risk evaluations for past models like Claude 3 Opus <sup><a target="_blank" rel="noopener noreferrer" href="https://cdn.sanity.io/files/4zrzovbb/website/210523b8e11b09c704c5e185fd362fe9e648d457.pdf">1</a></sup> and Claude 2 <sup><a target="_blank" rel="noopener noreferrer" href="https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/claude-2-model-card.pdf">2</a></sup></span></p>
       <p><span style="color: #dc2626;">✗ Does not provide specific details about evaluation methodology</span></p>
-      <p><span style="color: #dc2626;">✗ Lacks detail about expert/government input in future evaluation processes</span></p>
+      <p><span style="color: #dc2626;">✗ Lacks detail about third party input in evaluation processes</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to evaluations for persuasion or situational awareness.</span></p>
     `,
     'risk-thresholds': `
       <p><span style="color: #16a34a;">✓ Has defined thresholds for model autonomy risks and CBRN risks</span></p>
       <p><span style="color: #16a34a;">✓ Uses tiered system (ASL-1, ASL-2, etc.) with clear progression</span></p>
       <p><span style="color: #16a34a;">✓ Has pre-committed to specify future thresholds before reaching them</span></p>
       <p><span style="color: #dc2626;">✗ Current thresholds are described in abstract terms</span></p>
+      <p><span style="color: #dc2626;">✗ Does not yet provide thresholds for cyber risks, although they do commit to monitoring them</span></p>
     `,
     'risk-mitigations': `
       <p><span style="color: #16a34a;">✓ Has defined two categories of mitigations: deployment and security standards</span></p>
@@ -82,7 +84,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'halting-procedures': `
       <p><span style="color: #16a34a;">✓ Clear commitment to halt if thresholds are exceeded without mitigations</span></p>
       <p><span style="color: #16a34a;">✓ Specifies multiple levels of response (blocking responses, downgrading models, full de-deployment)</span></p>
-      <p><span style="color: #16a34a;">✓ Includes both deployment and training halt procedures</span></p>
+      <p><span style="color: #16a34a;">✓ Includes both deployment and training halting procedures</span></p>
     `,
     'safety-investment': `
       <p><span style="color: #16a34a;">✓ First AI lab to release a red line policy</span></p>
@@ -151,11 +153,31 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'safety-investment': 'No public evidence of implementation',
   },
   'meta': {
-    'risk-evaluations': 'No public evidence of implementation',
-    'risk-thresholds': 'No public evidence of implementation',
-    'risk-mitigations': 'No public evidence of implementation',
-    'halting-procedures': 'No public evidence of implementation',
-    'safety-investment': 'No public evidence of implementation',
+    'risk-evaluations': `
+      <p><span style="color: #16a34a;">✓ Commits to conducting CBRN and cyber risk assessment for frontier AI models</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to conducting risk assessment for model autonomy, ML R&D, situational awareness, or persuasion</span></p>
+      <p><span style="color: #dc2626;">✗ Provides no specific commitment to evaluation schedule or frequency</span></p>
+      <p><span style="color: #dc2626;">✗ Provides no specific details about third party collaboration </span></p>
+    `,
+    'risk-thresholds': `
+      <p><span style="color: #16a34a;">✓ Has defined "outcome criteria" for CBRN and Cyber risks</span></p>
+      <p><span style="color: #dc2626;">✗ Defines tiered risk levels, but does not conect them to outcome criteria</span></p>
+      <p><span style="color: #dc2626;">✗ Current outcome criteria are described in abstract terms</span></p>
+      <p><span style="color: #dc2626;">✗ The bar for outcome criteria are set very high</span></p>
+    `,
+    'risk-mitigations': `
+      <p><span style="color: #dc2626;">✗ No specific mitigations are decsribed in their Frontier AI Framework.</span></p>
+      <p><span style="color: #dc2626;">✗ Their policy says they will only adhere to security measures \"insofar as is technically feasible and commercially practicable,\" practically meaning they can implement as little as they please </span></p>
+    `,
+    'halting-procedures': `
+      <p><span style="color: #16a34a;">✓ Clear commitment to halt if risk thresholds are exceeded</span></p>
+      <p><span style="color: #16a34a;">✓ Includes both deployment and training halting procedures</span></p>
+      <p><span style="color: #dc2626;">✗ Halting commitment not connected to specific outcome criteria</span></p>
+    `,
+    'safety-investment': `
+      <p><span style="color: #16a34a;">✓ Plans to update framework in the future </span></p>
+      <p><span style="color: #dc2626;">✗ Has not yet connected specific mitigations to risk thresholds  </span></p>
+    `
   },
   'microsoft': {
     'risk-evaluations': `
@@ -181,11 +203,26 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'safety-investment': 'No public evidence of implementation',
   },
   'naver': {
-    'risk-evaluations': 'No public evidence of implementation',
-    'risk-thresholds': 'No public evidence of implementation',
-    'risk-mitigations': 'No public evidence of implementation',
-    'halting-procedures': 'No public evidence of implementation',
-    'safety-investment': 'No public evidence of implementation',
+    'risk-evaluations': `
+      <p><span style="color: #16a34a;">✓ Commits to evaluate frontier AI models every 3 months or every 6x compute increase</span></p>
+      <p><span style="color: #16a34a;">✓ Evaluates both "loss of control" and "misuse" risks</span></p>
+      <p><span style="color: #dc2626;">✗ No published evaluation results yet</span></p>
+    `,
+    'risk-thresholds': `
+      <p><span style="color: #dc2626;">✗ No specific capability thresholds defined</span></p>
+    `,
+    'risk-mitigations': `
+      <p><span style="color: #dc2626;">✗ No specific mitigations described</span></p>
+    `,
+    'halting-procedures': `
+      <p><span style="color: #16a34a;">✓ Clear commitment to withhold deployment for high-risk scenarios</span></p>
+      <p><span style="color: #dc2626;">✗ Halting criteria remain abstract and unconnected to specific evaluation results.</span></p>
+    `,
+    'safety-investment': `
+      <p><span style="color: #16a34a;">✓ Partners with external experts for safety research and red teaming</span></p>
+      <p><span style="color: #dc2626;">✗ No specific updates have been made to the framework, nor implementation details released</span></p>
+      <p><span style="color: #dc2626;">✗ No discussion of the framework or risk assessment in Naver's first major model release<sup><a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/html/2404.01954v1#S5">1</a></sup> after implementing the framework</span></p>
+    `,
   },
   'openai': {
     'risk-evaluations': `
@@ -207,9 +244,8 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
       <p><span style="color: #dc2626;">✗ No specific details for deployment measures</span></p>
     `,
     'halting-procedures': `
-      <p><span style="color: #16a34a;">✓ Clear rules: only deploy models with medium or lower post-mitigation risk</span></p>
       <p><span style="color: #16a34a;">✓ Includes both deployment and development halting procedures</span></p>
-      <p><span style="color: #dc2626;">✗ Commitments weakened by very high thresholds for "high" and "critical" risk</span></p>
+      <p><span style="color: #dc2626;">✗ Halting commitment weakened by very high thresholds for "high" and "critical" risk</span></p>
     `,
     'safety-investment': `
       <p><span style="color: #16a34a;">✓ Early leader in discussing AGI risks and safety research</span></p>
@@ -219,6 +255,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
       <p style="margin-left: 20px;"><span style="color: #dc2626;">• Delayed scorecard publication for GPT-4o</span></p>
       <p style="margin-left: 20px;"><span style="color: #dc2626;">• Used early model checkpoint for o1-preview evaluations without clear disclosure</span></p>
       <p style="margin-left: 20px;"><span style="color: #dc2626;">• Missing evaluations for o1 pro</span></p>
+      <p style="margin-left: 20px;"><span style="color: #dc2626;">• Did not share evaluation results for o3 launch in deep research</span></p>
     `,
   },
   'samsung': {
@@ -260,13 +297,34 @@ export const companyDescriptions: Record<string, string> = {
   g42: "G42 has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   ibm: "IBM has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   inflection: "Inflection has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
-  meta: "Meta has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
+  meta: "On February 3rd, Meta released its Frontier AI Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ai.meta.com/static-resource/meta-frontier-ai-framework/\">1</a></sup>. This framework includes a commitment to conduct risk evaluation, a set of tiered risk levels that woudl lead to halting procedures, and a set of outcome criteria for cyber and CBRN risks that are \"in scope\". These outcome critera are not directly connected to the risk thresholds, nor are any specific mitigations described by the policy.",
   microsoft: "Microsoft has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments. They have made a vague announcement that, together with OpenAI, they have \"defined capability thresholds that act as a trigger to review models in advance of their first release or downstream deployment.\" However, they have provided no public description of these practices, and there is one reported case of a model being deployed without the required review process taking place.",
   mistral: "Mistral AI has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
-  naver: "Naver has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
+  naver: "Naver has implemented an AI Safety Framework<sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf\">1</a></sup> that includes regular risk assessments, categorization of risks into \"misuse\" and \"loss of control\" categories, and details about governance structure. They commit to evaluating frontier AI models every 3 months or upon 6x compute increases. Their policy describes no specific thresholds nor mitigations, but does include a commitment to halt when risk is deemed unacceptable.",
   openai: "OpenAI's \"red line\" risk evaluation policy is known as their Preparedness Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn.openai.com/openai-preparedness-framework-beta.pdf\">1</a></sup>. It includes a commitment to conduct risk evaluations and monitor for tiered risk levels across four domains, and implement mitigations upon reaching those risk levels. However, they have also seemingly struggled to adhere to this framework on multiple occasions.",
   samsung: "Samsung has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   tii: "Technology Innovation Institute has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   xai: "xAI has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   zhipu: "Zhipu.ai has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments."
 }
+
+export type PolicyStatus = 'full' | 'partial' | 'none';
+
+export const policyStatuses: Record<string, PolicyStatus> = {
+  amazon: 'none',
+  anthropic: 'full',
+  cohere: 'none',
+  google: 'full',
+  g42: 'none',
+  ibm: 'none',
+  inflection: 'none',
+  meta: 'partial',
+  microsoft: 'partial',
+  mistral: 'none',
+  naver: 'partial',
+  openai: 'full',
+  samsung: 'none',
+  tii: 'none',
+  xai: 'none',
+  zhipu: 'none'
+};

@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { colors } from '../utils/colors'
 import { AlertCircle, ChevronDown } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Company } from '../types'
+import { policyStatuses } from '../db/scoreData'
 
 interface HeaderProps {
   onSelectCompany?: (company: Company) => void;
@@ -17,24 +18,21 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
   const [showUnfulfilled, setShowUnfulfilled] = useState(false);
 
   const getFulfilledCompanies = () => {
-    return companies.filter(company => {
-      const scores = Object.values(grades[company.id] || {})
-      if (!scores.length) return false
-      const average = scores.reduce((a, b) => a + b, 0) / scores.length
-      // Adjust threshold (>=2 or >=3) depending on your data
-      return average >= 2 
-    })
+    return companies.filter(company => policyStatuses[company.id] === 'full')
+  };
+
+  const getPartiallyFulfilledCompanies = () => {
+    return companies.filter(company => policyStatuses[company.id] === 'partial')
   };
 
   const getUnfulfilledCompanies = () => {
-    return companies.filter(company => {
-      const scores = Object.values(grades[company.id] || {})
-      if (!scores.length) return true
-      const average = scores.reduce((a, b) => a + b, 0) / scores.length
-      // Adjust threshold (>=2 or >=3) depending on your data
-      return average < 2
-    })
+    return companies.filter(company => policyStatuses[company.id] === 'none')
   };
+
+  // Get the counts
+  const fulfilledCount = getFulfilledCompanies().length;
+  const partialCount = getPartiallyFulfilledCompanies().length;
+  const unfulfilledCount = getUnfulfilledCompanies().length;
 
   return (
     <motion.header 
@@ -117,35 +115,47 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
 
           {/* Stats Bar */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center gap-4 p-3 sm:p-4 bg-black/5 backdrop-blur-md rounded-2xl w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-3 sm:p-4 bg-black/5 backdrop-blur-md rounded-2xl w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <motion.div 
-              className="flex items-center space-x-2 text-sm font-medium text-gray-600"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <AlertCircle size={14} className="text-amber-600" />
-              <span className="whitespace-nowrap">Deadline: Feb 10, 2025</span>
-            </motion.div>
-            <div className="hidden sm:block h-4 w-px bg-gray-300" />
-            <div className="flex gap-2 sm:gap-4 items-center justify-center sm:justify-start">
-              <Stat number="16" label="Companies" />
-              <div className="h-6 w-px bg-gray-300" />
-              <HoverDropdown
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <motion.div 
+                className="flex items-center space-x-2 text-sm font-medium text-gray-600"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <AlertCircle size={14} className="text-amber-600 shrink-0" />
+                <span className="whitespace-nowrap">Deadline: Feb 10, 2025</span>
+              </motion.div>
+
+              <div className="hidden sm:block h-4 w-px bg-gray-300" />
+
+              <HoverOrTapStat
                 label="Fulfilled"
-                number="3"
+                number={fulfilledCount.toString()}
                 highlight
                 companies={getFulfilledCompanies()}
                 onSelectCompany={onSelectCompany}
               />
-              <div className="h-6 w-px bg-gray-300" />
-              <HoverDropdown
+
+              <div className="hidden sm:block h-4 w-px bg-gray-300" />
+
+              <HoverOrTapStat
+                label="Partial"
+                number={partialCount.toString()}
+                warning
+                companies={getPartiallyFulfilledCompanies()}
+                onSelectCompany={onSelectCompany}
+              />
+
+              <div className="hidden sm:block h-4 w-px bg-gray-300" />
+
+              <HoverOrTapStat
                 label="Unfulfilled"
-                number="13"
+                number={unfulfilledCount.toString()}
                 danger
                 companies={getUnfulfilledCompanies()}
                 onSelectCompany={onSelectCompany}
@@ -162,16 +172,18 @@ function Stat({
   number, 
   label, 
   highlight, 
+  warning,
   danger,
   showDropdownIcon,
-  isHovered
+  isOpen
 }: { 
   number: string;
   label: string;
   highlight?: boolean;
+  warning?: boolean;
   danger?: boolean;
   showDropdownIcon?: boolean;
-  isHovered?: boolean;
+  isOpen?: boolean;
 }) {
   return (
     <div className="text-center leading-tight">
@@ -180,6 +192,7 @@ function Stat({
           className={`
             text-xl sm:text-2xl font-bold
             ${highlight ? 'text-green-600' :
+              warning ? 'text-amber-500' :
               danger ? 'text-red-600' :
               'text-gray-900'
             }
@@ -192,23 +205,30 @@ function Stat({
             size={16}
             className={`
               ml-1 transition-transform
-              ${isHovered ? 'opacity-70 translate-y-[1px]' : 'opacity-40'}
-              ${highlight ? 'text-green-600' : danger ? 'text-red-600' : 'text-gray-500'}
+              ${isOpen ? 'opacity-70 rotate-180 translate-y-[1px]' : 'opacity-40'}
+              ${highlight ? 'text-green-600' : 
+                warning ? 'text-amber-500' :
+                danger ? 'text-red-600' : 
+                'text-gray-500'}
             `}
           />
         )}
       </div>
-      <div className="text-sm text-gray-600">
-        {label}
-      </div>
+      <div className="text-sm text-gray-600">{label}</div>
     </div>
   )
 }
 
-function HoverDropdown({
+/**
+ * Combined hover + tap approach:
+ * - On desktop (non-touch), open/close via mouse enter/leave
+ * - On touch devices, open/close via tap
+ */
+function HoverOrTapStat({
   label,
   number,
   highlight,
+  warning,
   danger,
   companies,
   onSelectCompany,
@@ -216,40 +236,57 @@ function HoverDropdown({
   label: string
   number: string
   highlight?: boolean
+  warning?: boolean
   danger?: boolean
   companies: Company[]
   onSelectCompany?: (company: Company) => void
 }) {
-  const [hovered, setHovered] = useState(false)
+  // Detect if it's a touch-capable device
+  const [isTouch, setIsTouch] = useState(false)
 
-  const handleCompanySelect = (company: Company) => {
-    setHovered(false)  // Close the dropdown
-    onSelectCompany?.(company)  // Call the original handler
-  }
+  useEffect(() => {
+    // If 'ontouchstart' in window or (maxTouchPoints > 0),
+    // we consider it a touch device
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      setIsTouch(true)
+    }
+  }, [])
+
+  const [open, setOpen] = useState(false)
+
+  const openDropdown = () => setOpen(true)
+  const closeDropdown = () => setOpen(false)
+  const toggleDropdown = () => setOpen(o => !o)
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      // Hover only if not touch
+      onMouseEnter={() => !isTouch && openDropdown()}
+      onMouseLeave={() => !isTouch && closeDropdown()}
+      // Tap if touch
+      onClick={() => isTouch && toggleDropdown()}
     >
-      <div className="cursor-pointer select-none">
-        <Stat 
-          number={number} 
-          label={label} 
-          highlight={highlight} 
-          danger={danger}
-          showDropdownIcon={true}
-          isHovered={hovered}
-        />
-      </div>
+      <Stat 
+        number={number} 
+        label={label} 
+        highlight={highlight}
+        warning={warning}
+        danger={danger}
+        showDropdownIcon
+        isOpen={open}
+      />
       <AnimatePresence>
-        {hovered && (
+        {open && (
           <CompanyDropdown
             companies={companies}
-            onSelect={handleCompanySelect}  // Use our new handler
             highlight={highlight}
+            warning={warning}
             danger={danger}
+            onSelect={(company) => {
+              closeDropdown()
+              onSelectCompany?.(company)
+            }}
           />
         )}
       </AnimatePresence>
@@ -260,12 +297,14 @@ function HoverDropdown({
 function CompanyDropdown({ 
   companies, 
   onSelect, 
-  highlight, 
+  highlight,
+  warning,
   danger 
 }: {
   companies: Company[];
   onSelect: (company: Company) => void;
   highlight?: boolean;
+  warning?: boolean;
   danger?: boolean;
 }) {
   return (
@@ -273,8 +312,10 @@ function CompanyDropdown({
       className={`
         absolute
         top-full
-        right-[-2rem]
-        -ml-12
+        // On mobile, center under the stat:
+        left-1/2 -translate-x-1/2
+        // On desktop, revert to prior alignment:
+        sm:left-auto sm:translate-x-0 sm:right-[-2rem]
         mt-1
         py-2
         px-2
@@ -284,11 +325,9 @@ function CompanyDropdown({
         border
         border-gray-200
         z-[1000]
-        min-w-[120px]
-        max-w-[calc(100vw-2rem)]
+        // Let it auto-size to content, no scrollbar:
         whitespace-normal
         break-words
-        overflow-hidden
       `}
       initial={{ opacity: 0, y: -6 }}
       animate={{ opacity: 1, y: 0 }}
@@ -305,9 +344,14 @@ function CompanyDropdown({
             py-2
             text-sm
             hover:bg-gray-50
-            ${highlight ? 'text-green-600 hover:text-green-700' :
-              danger ? 'text-red-600 hover:text-red-700' :
-              'text-gray-600 hover:text-gray-700'
+            ${
+              highlight
+                ? 'text-green-600 hover:text-green-700'
+                : warning
+                  ? 'text-amber-500 hover:text-amber-600'
+                  : danger
+                    ? 'text-red-600 hover:text-red-700'
+                    : 'text-gray-600 hover:text-gray-700'
             }
           `}
           onClick={() => onSelect(company)}
