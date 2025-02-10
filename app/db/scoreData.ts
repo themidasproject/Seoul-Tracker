@@ -45,7 +45,7 @@ export const grades: Grades = {
  openai: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
  samsung: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  tii: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
- xai: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ xai: { 'risk-evaluations': 3, 'risk-thresholds': 3, 'risk-mitigations': 1, 'halting-procedures': 2, 'safety-investment': 2 },
  zhipu: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
 }
 
@@ -339,11 +339,31 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'safety-investment': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
   },
   'xai': {
-    'risk-evaluations': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
-    'risk-thresholds': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
-    'risk-mitigations': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
-    'halting-procedures': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
-    'safety-investment': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
+    'risk-evaluations': `
+      <p><span style="color: #16a34a;">✓ Indicates specific evaluations xAI will use, as well as numeric thresholds that would indicate an unacceptable level of risk</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to any frequency for risk evaluation</span></p>
+    `,    
+    'risk-thresholds': `
+      <p><span style="color: #16a34a;">✓ Defines risk thresholds for malicious use and loss of control</span></p>
+      <p><span style="color: #16a34a;">✓ Unlike all other policies, xAI includes specific benchmark results that indicate an unacceptable level of risk</span></p>
+      <p><span style="color: #dc2626;">✗ Does not describe risk thresholds outside of benchmark results, nor is the rationale for the benchmarks provided as described in the Seoul commitment, leading to the possibility of unacceptable risk being posed that isn't captured by the specified evaluations</span></p>
+    `,
+    'risk-mitigations': `
+      <p><span style="color: #dc2626;">✗ Only provides examples of three categories of deployment mitigations that "may" be employed</span></p>
+      <p><span style="color: #dc2626;">✗ Includes no details on security mitigations</span></p>
+      <p><span style="color: #dc2626;">✗ Mitigations are not connected to specific risk thresholds</span></p>
+    `,
+    'halting-procedures': `
+      <p><span style="color: #16a34a;">✓ "Intends" to implement adequete safeguards before releasing models to the public</span></p>
+      <p><span style="color: #16a34a;">✓ Plans to de-deploy models if allowing them to continue running poses a "material and unjustifiable" increase in the likliehood of catastrophic events</span></p>
+      <p><span style="color: #dc2626;">✗ Does not make binding commitments to pause development and deployment when risk thresholds are reached</span></p>
+      <p><span style="color: #dc2626;">✗ Does not discuss risks from internal deployment</span></p>
+    `,
+    'safety-investment': `
+      <p><span style="color: #16a34a;">✓ Plans to release an updated version of the policy within three months</span></p>
+      <p><span style="color: #dc2626;">✗ Has only released a (presumably non-binding) "draft" of the policy by the deadline</span></p>
+      <p><span style="color: #dc2626;">✗ Does not discuss plans to work with governments or third party experts</span></p>
+    `,
   },
   'zhipu': {
     'risk-evaluations': '<p><span style="color: #dc2626;">✗ No public evidence of implementation</span></p>',
@@ -359,7 +379,7 @@ export const companyDescriptions: Record<string, string> = {
   amazon: "Amazon has released a Frontier Model Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://assets.amazon.science/a7/7c/8bdade5c4eda9168f3dee6434fff/pc-amazon-frontier-model-safety-framework-2-7-final-2-9.pdf\">1</a></sup> that includes a commitment to conduct risk evaluations, one level of upcoming thresholds for unacceptable CBRN, Cyber, and AI R&D risks, and a set of development, deployment, and security mitigations that they will use to manage risk. These mitigations are not directly connected to specific risk thresholds. They commit to halting external deployment if unacceptable risk is detected, but not halting development or internal deployment.",
   anthropic: "Anthropic released the first major \"red line\" risk evaluation policy among top AI developers, known as their responsible scaling policy <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.anthropic.com/news/anthropics-responsible-scaling-policy\">1</a></sup>. They conduct risk evaluations at least every six months. For the upcoming tier of risks, they've specified (in abstract terms) risk thresholds for (1) model autonomy and (2) chemical, biological, radiological, and nuclear risks. Reaching these capability thresholds will necessitate the implementation of new security and deployment mitigations. These mitigation standards have also been described in abstract terms. Anthropic has made an affirmative commitment to pause deployment and training if these thresholds are reached without the required mitigations in place. They've already published one update to the policy, and appear invested in maintaining and adhering to the commitment.",
   cohere: "On February 7th, Cohere released their Secure AI Frontier Model Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf\">1</a></sup>. This policy includes a commitment to conduct risk evaluations for new models, and not to release any new models that pose greater total risk than previous models. However, they only discuss limited near-term risks, and they don't provide specific evaluations-based thresholds that will be used to determine when the risk level is unacceptable. They also only describe mitigations in limited detail.",
-  google: "Google has released a \"red line\" risk evaluation policy known as their Frontier Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf\">1</a></sup>. This is a commitment to conduct risk evaluation across four major domains of risk, and to implement deployment and security mitigations when warnings signs of dangerous capabilities appear. Their first major update to the policy strengthened it in some areas, including connecting security mitigations to risk thresholds, while weakening it in others, such as removing an affirmative commitment to halt deployment when risk levels are unacceptably high.",
+  google: "Google has released a \"red line\" risk evaluation policy known as their Frontier Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0%20(1).pdf\">1</a></sup>. This is a commitment to conduct risk evaluation across four major domains of risk, and to implement deployment and security mitigations when warnings signs of dangerous capabilities appear. Their first major update to the policy strengthened it in some areas, including connecting security mitigations to risk thresholds, while weakening it in others, such as removing an affirmative commitment to halt deployment when risk levels are unacceptably high.",
   g42: "G42 released a Frontier AI Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.g42.ai/application/files/9517/3882/2182/G42_Frontier_Safety_Framework_Publication_Version.pdf\">1</a></sup> that includes a commitment to conduct risk evaluations, an upcoming risk threshold (for both biological and cybersecurity risks), and four tiers of deployment and security mitigations (described in abstract terms) which will be in place by the time risk thresholds are met, or else require halting procedures.",
   ibm: "IBM has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments. They did release a blog post <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://newsroom.ibm.com/blog-trustworthy-ai-at-scale-ibms-ai-safety-and-governance-framework\">1</a></sup> in the lead-up to the Paris AI Action Summit, ostensibly detailing their compliance, but no tiered red line risk evaluation framework can be found.",
   inflection: "Inflection has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
@@ -370,7 +390,7 @@ export const companyDescriptions: Record<string, string> = {
   openai: "OpenAI's \"red line\" risk evaluation policy is known as their Preparedness Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn.openai.com/openai-preparedness-framework-beta.pdf\">1</a></sup>. It includes a commitment to conduct risk evaluations and monitor for tiered risk levels across four domains, and implement mitigations upon reaching those risk levels. However, they have also seemingly struggled to adhere to this framework on multiple occasions.",
   samsung: "Samsung has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   tii: "Technology Innovation Institute has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
-  xai: "xAI has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
+  xai: "xAI has released a draft of their risk management framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://x.ai/documents/2025.02.10-RMF-Draft.pdf\">1</a></sup> which includes specific benchmarks that would represent unacceptable risk for malicious use and loss of control. It currently only provides examples of mitigations that will be implemented when those thresholds are reached, and doesn't include an affirmative commitment to pause further development or deployment when thresholds are reached.",
   zhipu: "Zhipu.ai has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments."
 }
 
@@ -391,6 +411,6 @@ export const policyStatuses: Record<string, PolicyStatus> = {
   openai: 'full',
   samsung: 'none',
   tii: 'none',
-  xai: 'none',
+  xai: 'partial',
   zhipu: 'none'
 };
