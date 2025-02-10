@@ -31,7 +31,7 @@ export const dimensions: Dimension[] = [
 
 
 export const grades: Grades = {
- amazon: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
+ amazon: { 'risk-evaluations': 2, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
  anthropic: { 'risk-evaluations': 2, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 4 },
  cohere: { 'risk-evaluations': 2, 'risk-thresholds': 1, 'risk-mitigations': 2, 'halting-procedures': 1, 'safety-investment': 3 },
  google: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
@@ -52,11 +52,30 @@ export const grades: Grades = {
 
 export const dimensionDescriptions: Record<string, Record<string, string>> = {
   'amazon': {
-    'risk-evaluations': 'No public evidence of implementation',
-    'risk-thresholds': 'No public evidence of implementation',
-    'risk-mitigations': 'No public evidence of implementation',
-    'halting-procedures': 'No public evidence of implementation',
-    'safety-investment': 'No public evidence of implementation',
+    'risk-evaluations': `
+      <p><span style="color: #16a34a;">✓ Commits to conduct risk evaluations during training and prior to deployment for all frontier models, as well as re-evaluating for all updates that meaningfully increase capabilities</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to a minimum frequency for risk evaluation</span></p>
+      <p><span style="color: #dc2626;">✗ Does not evaluate for persuasion or model autonomy</span></p>
+    `,
+    'risk-thresholds': `
+      <p><span style="color: #16a34a;">✓ Has defined one upcoming risk threshold for each of three categories of risk: CBRN, Cyber, and AI R&D. </span></p>
+      <p><span style="color: #dc2626;">✗ Current thresholds are described in abstract terms, and set quite high</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to defining future thresholds before current thresholds are reached</span></p>
+    `,
+    'risk-mitigations': `
+      <p><span style="color: #16a34a;">✓ Describes multiple training, deployment, and security mitigations that will be used to ensure risk stays below thresholds</span></p>
+      <p><span style="color: #dc2626;">✗ Specific mitigations are not connected to each risk threshold</span></p>
+      <p><span style="color: #dc2626;">✗ Mitigations are described in abstract terms without specific, verifiable details</span></p>
+    `,
+    'halting-procedures': `
+      <p><span style="color: #16a34a;">✓ Commits to not externally deploy frontier AI models if they exceed risk thresholds</span></p>
+      <p><span style="color: #dc2626;">✗ Doesn't commit to halting development or internal deployment for models exceeding risk thresholds</span></p>
+    `,
+    'safety-investment': `
+      <p><span style="color: #16a34a;">✓ Worked with third party experts to draft their initial framework. Plans to continue collaborating on safety with governments, domain experts, and other frontier model providers</span></p>
+      <p><span style="color: #16a34a;">✓ Commits to publishing evaluation results for all upcoming model releases</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to a timeframe for future updates to the framework</span></p>
+    `,
   },
   'anthropic': {
     'risk-evaluations': `
@@ -144,7 +163,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     `,
     'safety-investment': `
       <p><span style="color: #16a34a;">✓ Has committed to evolve the framework as understanding improves</span></p>
-      <p><span style="color: #dc2626;">✗ Weakened policy in first major update, saying that they only plan to adhere to it if other companies are too, despite the Seoul commitment having ostensibly been made without such a condition</span></p>
+      <p><span style="color: #dc2626;">✗ Weakened policy in first major update, saying that they only plan to adhere to it if other companies are doing so too, despite the Seoul commitment having been made without such a condition</span></p>
     `,
   },
   'g42': {
@@ -272,10 +291,10 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
   },
   'openai': {
     'risk-evaluations': `
-      <p><span style="color: #16a34a;">✓ Evaluates four risk categories: cybersecurity, model autonomy, persuasion, and CBRN</span></p>
-      <p><span style="color: #16a34a;">✓ Commits to maintain dynamic scorecards for each model</span></p>
-      <p><span style="color: #dc2626;">✗ No published scorecards have been updated</span></p>
-      <p><span style="color: #dc2626;">✗ Some models released without public scorecards</span></p>
+      <p><span style="color: #16a34a;">✓ Evaluates frontier models across four risk categories: cybersecurity, model autonomy, persuasion, and CBRN</span></p>
+      <p><span style="color: #16a34a;">✓ Commits to publushing scorecards for each model</span></p>
+      <p><span style="color: #dc2626;">✗ Does not commit to a minimum frequency for risk evaluations</span></p>
+      <p><span style="color: #dc2626;">✗ Some models have already been released without public scorecards</span></p>
     `,
     'risk-thresholds': `
       <p><span style="color: #16a34a;">✓ Defines four levels of risk: low, medium, high, and critical</span></p>
@@ -285,9 +304,10 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
       <p><span style="color: #dc2626;">✗ Thresholds are described only in abstract terms</span></p>
     `,
     'risk-mitigations': `
-      <p><span style="color: #16a34a;">✓ Includes both security and deployment mitigations</span></p>
+      <p><span style="color: #16a34a;">✓ Discusses both security and deployment mitigations</span></p>
       <p><span style="color: #dc2626;">✗ Few specific details for security measures</span></p>
       <p><span style="color: #dc2626;">✗ No specific details for deployment measures</span></p>
+      <p><span style="color: #dc2626;">✗ Specific mitigations are not connected to specific risk thresholds</span></p>
     `,
     'halting-procedures': `
       <p><span style="color: #16a34a;">✓ Includes both deployment and development halting procedures</span></p>
@@ -336,7 +356,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
 
 
 export const companyDescriptions: Record<string, string> = {
-  amazon: "Amazon has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
+  amazon: "Amazon has released a Frontier Model Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://assets.amazon.science/a7/7c/8bdade5c4eda9168f3dee6434fff/pc-amazon-frontier-model-safety-framework-2-7-final-2-9.pdf\">1</a></sup> that includes a commitment to conduct risk evaluations, one level of upcoming thresholds for unacceptable CBRN, Cyber, and AI R&D risks, and a set of development, deployment, and security mitigations that they will use to manage risk. These mitigations are not directly connected to specific risk thresholds. They commit to halting external deployment if unacceptable risk is detected, but not halting development or internal deployment.",
   anthropic: "Anthropic released the first major \"red line\" risk evaluation policy among top AI developers, known as their responsible scaling policy <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.anthropic.com/news/anthropics-responsible-scaling-policy\">1</a></sup>. They conduct risk evaluations at least every six months. For the upcoming tier of risks, they've specified (in abstract terms) risk thresholds for (1) model autonomy and (2) chemical, biological, radiological, and nuclear risks. Reaching these capability thresholds will necessitate the implementation of new security and deployment mitigations. These mitigation standards have also been described in abstract terms. Anthropic has made an affirmative commitment to pause deployment and training if these thresholds are reached without the required mitigations in place. They've already published one update to the policy, and appear invested in maintaining and adhering to the commitment.",
   cohere: "On February 7th, Cohere released their Secure AI Frontier Model Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf\">1</a></sup>. This policy includes a commitment to conduct risk evaluations for new models, and not to release any new models that pose greater total risk than previous models. However, they only discuss limited near-term risks, and they don't provide specific evaluations-based thresholds that will be used to determine when the risk level is unacceptable. They also only describe mitigations in limited detail.",
   google: "Google has released a \"red line\" risk evaluation policy known as their Frontier Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf\">1</a></sup>. This is a commitment to conduct risk evaluation across four major domains of risk, and to implement deployment and security mitigations when warnings signs of dangerous capabilities appear. However, it has yet to be fleshed out: mitigations have not been connected to risk thresholds, nor has the policy been implemented in a detailed, verifiable manner.",
@@ -344,7 +364,7 @@ export const companyDescriptions: Record<string, string> = {
   ibm: "IBM has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments. They did release a blog post <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://newsroom.ibm.com/blog-trustworthy-ai-at-scale-ibms-ai-safety-and-governance-framework\">1</a></sup> in the lead-up to the Paris AI Action Summit, ostensibly detailing their compliance, but no tiered red line risk evaluation framework can be found.",
   inflection: "Inflection has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   meta: "On February 3rd, Meta released its Frontier AI Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ai.meta.com/static-resource/meta-frontier-ai-framework/\">1</a></sup>. This framework includes a commitment to conduct risk evaluation, a set of tiered risk levels that would lead to halting procedures, and a set of outcome criteria for cyber and CBRN risks that are \"in scope\". These outcome criteria are not directly connected to the risk thresholds, nor are any specific mitigations described by the policy. The policy includes overly broad disclaimers that absolve them of obligations if risks aren't \"unique\" or clearly modeled, allowing them to write off (1) speculative risks and (2)risks that are simultaneously posed by other AI systems.",
-  microsoft: "Microsoft has released a Frontier Governance Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework.pdf\">1</a></sup> that includes a commitment to conduct risk evaluation every six months and for all models over 10^26 FLOPs, as well as a set of tiered risk levels for CBRN, cybersecurity, and model autonomy risks. They provide an abstract set of mitigations that they will use to ensure the risk thresholds are not breached, but specific mitigation standards are not connected to each threshold. They do commit to pause development and deployment if risk thresholds are exceeded without sufficient mitigations in place.",
+  microsoft: "Microsoft has released a Frontier Governance Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework.pdf\">1</a></sup> that includes a commitment to conduct risk evaluation every six months and for all models over 10^26 FLOPs, as well as a set of tiered risk levels for CBRN, cybersecurity, and model autonomy risks. They provide an abstract set of mitigations that they will use to ensure the risk thresholds are not breached, but specific mitigation standards are not connected to each threshold. They do commit to pause development and deployment if risk thresholds are exceeded without adequate mitigations in place.",
   mistral: "Mistral AI has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   naver: "Naver has implemented an AI Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf\">1</a></sup> that includes regular risk assessments, categorization of risks into \"misuse\" and \"loss of control\" categories, and details about governance structure. They commit to evaluating frontier AI models every 3 months or upon 6x compute increases. Their policy describes no specific thresholds nor mitigations, but does include a commitment to halt when risk is deemed unacceptable.",
   openai: "OpenAI's \"red line\" risk evaluation policy is known as their Preparedness Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn.openai.com/openai-preparedness-framework-beta.pdf\">1</a></sup>. It includes a commitment to conduct risk evaluations and monitor for tiered risk levels across four domains, and implement mitigations upon reaching those risk levels. However, they have also seemingly struggled to adhere to this framework on multiple occasions.",
@@ -357,7 +377,7 @@ export const companyDescriptions: Record<string, string> = {
 export type PolicyStatus = 'full' | 'partial' | 'none';
 
 export const policyStatuses: Record<string, PolicyStatus> = {
-  amazon: 'none',
+  amazon: 'full',
   anthropic: 'full',
   cohere: 'partial',
   google: 'full',

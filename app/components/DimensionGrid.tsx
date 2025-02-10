@@ -26,6 +26,7 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
     g42: {label: 'Read the policy', url: 'https://www.g42.ai/application/files/9517/3882/2182/G42_Frontier_Safety_Framework_Publication_Version.pdf'},
     cohere: {label: 'Read the policy', url: 'https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf'},
     microsoft: {label: 'Read the policy', url: 'https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework.pdf'},
+    amazon: {label: 'Read the policy', url: 'https://assets.amazon.science/a7/7c/8bdade5c4eda9168f3dee6434fff/pc-amazon-frontier-model-safety-framework-2-7-final-2-9.pdf'},
   }
   const policy = policyLinks[company.id.toLowerCase()]
 
