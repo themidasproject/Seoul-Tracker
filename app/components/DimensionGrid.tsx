@@ -77,7 +77,7 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
       transition={{ duration: 0.3 }}
     >
       <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-900">
-        {company.name} Commitment Progress
+        {company.name}
       </h2>
       
       <div className="relative flex-1">
