@@ -22,7 +22,10 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
     google: { label: 'Read the policy', url: 'https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf' },
     openai: { label: 'Read the policy', url: 'https://cdn.openai.com/openai-preparedness-framework-beta.pdf' },
     meta: { label: 'Read the policy', url: 'https://ai.meta.com/static-resource/meta-frontier-ai-framework/' },
-    naver: { label: 'Read the policy', url: 'https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf' }
+    naver: { label: 'Read the policy', url: 'https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf' },
+    g42: {label: 'Read the policy', url: 'https://www.g42.ai/application/files/9517/3882/2182/G42_Frontier_Safety_Framework_Publication_Version.pdf'},
+    cohere: {label: 'Read the policy', url: 'https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf'},
+    microsoft: {label: 'Read the policy', url: 'https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework.pdf'},
   }
   const policy = policyLinks[company.id.toLowerCase()]
 

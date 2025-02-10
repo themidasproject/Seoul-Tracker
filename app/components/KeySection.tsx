@@ -71,8 +71,11 @@ export default function KeySection() {
             <div className="space-y-8">
               {/* Introduction */}
               <div>
-                <p className="text-gray-600 leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
+                <p className="text-gray-600 leading-relaxed mb-4 [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
                   This tracker monitors implementation of the <a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener noreferrer">Frontier AI Safety Commitments</a> made at the 2024 AI Safety Summit in Seoul. The five categories below correspond directly to the five components of Outcome 1 as described in the commitment document. These commitments represent public promises made by leading AI companies to world governments and the global community, establishing expectations for transparency and responsible development of frontier AI systems.
+                </p>
+                <p className="text-gray-600 leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
+                  In February 2025, four new companies joined the list of companies that have publicly committed to the Seoul commitments: Magic, Minimax, 01.ai, and Nvidia. They have not yet been added to this tracker to ensure they have adequete time to produce a compliant risk assessment policy.
                 </p>
               </div>
 
@@ -111,9 +114,23 @@ export default function KeySection() {
                 </div>
               </div>
 
+              {/* Changelog */}
+              <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 className="font-bold text-lg mb-3 text-gray-800">Changelog</h3>
+                <div className="space-y-3">
+                  <p className="text-gray-600 text-sm">This tracker will be updated as new information emerges about companies' implementation of the Seoul commitments.</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li className="text-gray-700">
+                      <span className="font-medium">February 10th, 2025:</span>
+                      <span className="ml-2 text-gray-600">Initial publication</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
               {/* Footer Note */}
               <p className="text-xs text-gray-500 italic [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
-                This website was originally published by The Midas Project on February 10th, 2025, and is subject to continual updates as new details emerge. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
+                The Seoul Commitment Tracker is a report from The Midas Project, a watchdog AI safety organization. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
               </p>
             </div>
           </motion.div>
