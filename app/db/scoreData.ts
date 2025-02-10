@@ -34,7 +34,7 @@ export const grades: Grades = {
  amazon: { 'risk-evaluations': 2, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
  anthropic: { 'risk-evaluations': 2, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 4, 'safety-investment': 4 },
  cohere: { 'risk-evaluations': 2, 'risk-thresholds': 1, 'risk-mitigations': 2, 'halting-procedures': 1, 'safety-investment': 3 },
- google: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 2 },
+ google: { 'risk-evaluations': 2, 'risk-thresholds': 3, 'risk-mitigations': 3, 'halting-procedures': 2, 'safety-investment': 2 },
  g42: { 'risk-evaluations': 3, 'risk-thresholds': 2, 'risk-mitigations': 2, 'halting-procedures': 2, 'safety-investment': 3 },
  ibm: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
  inflection: { 'risk-evaluations': 1, 'risk-thresholds': 1, 'risk-mitigations': 1, 'halting-procedures': 1, 'safety-investment': 1 },
@@ -141,28 +141,28 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'risk-evaluations': `
       <p><span style="color: #16a34a;">✓ Aims to evaluate models every 6x compute and every 3 months of fine-tuning</span></p>
       <p><span style="color: #16a34a;">✓ Has published evaluations in research papers <sup><a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2403.13793">1</a></sup> and model cards <sup><a target="_blank" rel="noopener noreferrer" href="https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf#page=69">2</a></sup> <sup><a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/pdf/2408.00118#page=11">3</a></sup></span></p>
-      <p><span style="color: #dc2626;">✗ Falls short of full commitment to evaluation schedule</span></p>
+      <p><span style="color: #dc2626;">✗ In v2 of policy, removed previous intention to evaluate models every 6x scaleup in compute and 3 months of fine-tuning, instead just aiming for "regular" evaluations</span></p>
       <p><span style="color: #dc2626;">✗ No details about external expert collaboration in evaluations</span></p>
     `,
     'risk-thresholds': `
-      <p><span style="color: #16a34a;">✓ Defines four categories of risk: autonomy, ML R&D, biosecurity, and cybersecurity</span></p>
-      <p><span style="color: #16a34a;">✓ Has multiple capability levels defined for biosecurity and cybersecurity</span></p>
+      <p><span style="color: #16a34a;">✓ Defines four categories of risk: CBRN, cyber, ML R&D, and deceptive alignment</span></p>
+      <p><span style="color: #16a34a;">✓ Has two critical capability levels defined for each risk category, aside from CBRN which only has one</span></p>
       <p><span style="color: #dc2626;">✗ Thresholds lack specific details</span></p>
-      <p><span style="color: #dc2626;">✗ No specific evaluation procedures to verify threshold crossing</span></p>
     `,
     'risk-mitigations': `
-      <p><span style="color: #16a34a;">✓ Has specified both security and deployment mitigations</span></p>
-      <p><span style="color: #16a34a;">✓ Includes four tiers of mitigations for each category</span></p>
-      <p><span style="color: #dc2626;">✗ Mitigations described only in abstract terms</span></p>
-      <p><span style="color: #dc2626;">✗ No clear connection between mitigations and capability thresholds</span></p>
+      <p><span style="color: #16a34a;">✓ Describes both security and deployment mitigations</span></p>
+      <p><span style="color: #16a34a;">✓ Security mitigations reference industry best practices proposed by external experts</span></p>
+      <p><span style="color: #dc2626;">✗ Deployment itigations described only in abstract terms</span></p>
+      <p><span style="color: #dc2626;">✗ Does not address internal deployment</span></p>
+      <p><span style="color: #dc2626;">✗ Specific deployment mitigations are not clearly connected to risk thresholds</span></p>
     `,
     'halting-procedures': `
-      <p><span style="color: #16a34a;">✓ Commits to halt deployment or development if thresholds reached without mitigations</span></p>
-      <p><span style="color: #dc2626;">✗ Future work needed to map thresholds to specific mitigations</span></p>
-      <p><span style="color: #dc2626;">✗ Halting commitment remains theoretical without specific implementation details</span></p>
+      <p><span style="color: #16a34a;">✓ If a model exceeds acceptable risk levels, the response plan "may involve" putting development or deployment on hold</span></p>
+      <p><span style="color: #dc2626;">✗ v2 of the policy removes an affirmative commitment to halt deployment when risk levels are unacceptably high</span></p>
     `,
     'safety-investment': `
-      <p><span style="color: #16a34a;">✓ Has committed to evolve the framework as understanding improves</span></p>
+      <p><span style="color: #16a34a;">✓ Has committed to update the framework as understanding improves, and describes specific goals for future updates</span></p>
+      <p><span style="color: #16a34a;">✓ Worked with third party experts to draft their framework</span></p>
       <p><span style="color: #dc2626;">✗ Weakened policy in first major update, saying that they only plan to adhere to it if other companies are doing so too, despite the Seoul commitment having been made without such a condition</span></p>
     `,
   },
@@ -359,7 +359,7 @@ export const companyDescriptions: Record<string, string> = {
   amazon: "Amazon has released a Frontier Model Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://assets.amazon.science/a7/7c/8bdade5c4eda9168f3dee6434fff/pc-amazon-frontier-model-safety-framework-2-7-final-2-9.pdf\">1</a></sup> that includes a commitment to conduct risk evaluations, one level of upcoming thresholds for unacceptable CBRN, Cyber, and AI R&D risks, and a set of development, deployment, and security mitigations that they will use to manage risk. These mitigations are not directly connected to specific risk thresholds. They commit to halting external deployment if unacceptable risk is detected, but not halting development or internal deployment.",
   anthropic: "Anthropic released the first major \"red line\" risk evaluation policy among top AI developers, known as their responsible scaling policy <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.anthropic.com/news/anthropics-responsible-scaling-policy\">1</a></sup>. They conduct risk evaluations at least every six months. For the upcoming tier of risks, they've specified (in abstract terms) risk thresholds for (1) model autonomy and (2) chemical, biological, radiological, and nuclear risks. Reaching these capability thresholds will necessitate the implementation of new security and deployment mitigations. These mitigation standards have also been described in abstract terms. Anthropic has made an affirmative commitment to pause deployment and training if these thresholds are reached without the required mitigations in place. They've already published one update to the policy, and appear invested in maintaining and adhering to the commitment.",
   cohere: "On February 7th, Cohere released their Secure AI Frontier Model Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf\">1</a></sup>. This policy includes a commitment to conduct risk evaluations for new models, and not to release any new models that pose greater total risk than previous models. However, they only discuss limited near-term risks, and they don't provide specific evaluations-based thresholds that will be used to determine when the risk level is unacceptable. They also only describe mitigations in limited detail.",
-  google: "<p> Note: Currently outdated while reviewing February 2025 updates to the Frontier Safety Framework</p><p></p><p>Google has released a \"red line\" risk evaluation policy known as their Frontier Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf\">1</a></sup>. This is a commitment to conduct risk evaluation across four major domains of risk, and to implement deployment and security mitigations when warnings signs of dangerous capabilities appear. However, it has yet to be fleshed out: mitigations have not been connected to risk thresholds, nor has the policy been implemented in a detailed, verifiable manner.</p>",
+  google: "Google has released a \"red line\" risk evaluation policy known as their Frontier Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf\">1</a></sup>. This is a commitment to conduct risk evaluation across four major domains of risk, and to implement deployment and security mitigations when warnings signs of dangerous capabilities appear. Their first major update to the policy strengthened it in some areas, including connecting security mitigations to risk thresholds, while weakening it in others, such as removing an affirmative commitment to halt deployment when risk levels are unacceptably high.",
   g42: "G42 released a Frontier AI Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.g42.ai/application/files/9517/3882/2182/G42_Frontier_Safety_Framework_Publication_Version.pdf\">1</a></sup> that includes a commitment to conduct risk evaluations, an upcoming risk threshold (for both biological and cybersecurity risks), and four tiers of deployment and security mitigations (described in abstract terms) which will be in place by the time risk thresholds are met, or else require halting procedures.",
   ibm: "IBM has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments. They did release a blog post <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://newsroom.ibm.com/blog-trustworthy-ai-at-scale-ibms-ai-safety-and-governance-framework\">1</a></sup> in the lead-up to the Paris AI Action Summit, ostensibly detailing their compliance, but no tiered red line risk evaluation framework can be found.",
   inflection: "Inflection has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",

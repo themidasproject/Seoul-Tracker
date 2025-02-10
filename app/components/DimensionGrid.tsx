@@ -19,7 +19,7 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
   // Anthropic -> RSP, Google -> FSF, and OpenAI -> PF.
   const policyLinks: Record<string, { label: string; url: string }> = {
     anthropic: { label: 'Read the policy', url: 'https://assets.anthropic.com/m/24a47b00f10301cd/original/Anthropic-Responsible-Scaling-Policy-2024-10-15.pdf' },
-    google: { label: 'Read the policy', url: 'https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf' },
+    google: { label: 'Read the policy', url: 'https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0%20(1).pdf' },
     openai: { label: 'Read the policy', url: 'https://cdn.openai.com/openai-preparedness-framework-beta.pdf' },
     meta: { label: 'Read the policy', url: 'https://ai.meta.com/static-resource/meta-frontier-ai-framework/' },
     naver: { label: 'Read the policy', url: 'https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf' },
@@ -75,7 +75,7 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-900">
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-900">
         {company.name} Commitment Progress
       </h2>
       
@@ -217,15 +217,17 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
         )}
       </AnimatePresence>
 
-      {/* Subtle "Read the policy" button for Anthropic, Google, and OpenAI in the top right corner */}
+      {/* Updated styling for the "Read the policy" button */}
       {policy && (
         <a 
           href={policy.url} 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="absolute top-2 right-2 bg-white/80 px-2 py-1 rounded text-xs text-gray-500 hover:text-gray-800 transition-colors flex items-center"
+          className="absolute top-3 right-3 bg-gray-50 px-3 py-1.5 rounded-md text-sm text-gray-600 
+            hover:bg-gray-100 hover:text-gray-900 transition-all border border-gray-200 
+            flex items-center gap-1.5 shadow-sm hover:shadow"
         >
-          <FileText size={14} className="mr-1" />
+          <FileText size={16} className="mr-0.5" />
           {policy.label}
         </a>
       )}
