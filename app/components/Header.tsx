@@ -109,7 +109,7 @@ export default function Header({ onSelectCompany, companies, grades }: HeaderPro
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Will AI Companies Keep Their Safety Promises?
+              Have AI Companies Kept Their Safety Promises?
             </motion.p>
           </div>
 

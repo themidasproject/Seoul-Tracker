@@ -54,7 +54,7 @@ export default function Tracker() {
             At the <a href='https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024' target='_blank' rel='noopener noreferrer' style={{ color: colors.accent, textDecoration: 'underline' }}>2024 AI Safety Summit</a> in Seoul, South Korea, sixteen leading tech organizations pledged to implement "red line" risk evaluation policies for frontier AI models. The deadline has now arrived, but not everyone has lived up to their commitment. This tracker assesses progress across the five key components.
           </motion.p>
           <div className="flex flex-col lg:flex-row gap-8 mb-8">
-            <div className="w-full lg:w-[400px] flex-shrink-0">
+            <div className="w-full lg:w-[400px] flex-shrink-0 px-3 sm:px-0">
               <CompanyList 
                 companies={companies} 
                 selectedCompany={selectedCompany} 
