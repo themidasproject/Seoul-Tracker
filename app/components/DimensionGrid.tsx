@@ -76,8 +76,8 @@ export default function DimensionGrid({ company, dimensions, grades, averageScor
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-900">
-        {company.name}
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-900 pt-5">
+        {company.name} Commitment Progress
       </h2>
       
       <div className="relative flex-1">
