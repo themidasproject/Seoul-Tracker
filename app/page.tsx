@@ -95,7 +95,20 @@ export default function Tracker() {
             </div>
           </div>
           <KeySection />
-          <SocialShare />
+          <div>
+            <SocialShare />
+            <div className="text-center mt-2">
+              <a 
+                href="https://www.themidasproject.com/privacy-policy/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm hover:underline opacity-60"
+                style={{ color: colors.lightText }}
+              >
+                Privacy Policy
+              </a>
+            </div>
+          </div>
         </main>
       </div>
     </>
