@@ -126,7 +126,7 @@ export default function KeySection() {
                     </li>
                     <li className="text-gray-700">
                       <span className="font-medium">February 10th, 2025:</span>
-                      <span className="ml-2 text-gray-600">Updated xAI to include newly released policy, and Google to include updates made to Frontier Safety Framework</span>
+                      <span className="ml-2 text-gray-600">Updated xAI to include newly released policy, and Google to include updates made to Frontier Safety Framework. Also made minor changes to OpenAI for accuracy and consistency.</span>
                     </li>
                   </ul>
                 </div>

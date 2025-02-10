@@ -293,7 +293,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'risk-evaluations': `
       <p><span style="color: #16a34a;">✓ Evaluates frontier models across four risk categories: cybersecurity, model autonomy, persuasion, and CBRN</span></p>
       <p><span style="color: #16a34a;">✓ Commits to publushing scorecards for each model</span></p>
-      <p><span style="color: #dc2626;">✗ Does not commit to a minimum frequency for risk evaluations</span></p>
+      <p><span style="color: #16a34a;">✓ Commits to evaluating pre-mitigation risk whenever there is a >2x effective compute increase or major algorithmic breakthrough</span></p>
       <p><span style="color: #dc2626;">✗ Some models have already been released without public scorecards</span></p>
     `,
     'risk-thresholds': `
@@ -304,10 +304,10 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
       <p><span style="color: #dc2626;">✗ Thresholds are described only in abstract terms</span></p>
     `,
     'risk-mitigations': `
-      <p><span style="color: #16a34a;">✓ Discusses both security and deployment mitigations</span></p>
-      <p><span style="color: #dc2626;">✗ Few specific details for security measures</span></p>
-      <p><span style="color: #dc2626;">✗ No specific details for deployment measures</span></p>
-      <p><span style="color: #dc2626;">✗ Specific mitigations are not connected to specific risk thresholds</span></p>
+      <p><span style="color: #16a34a;">✓ Mentions both security and deployment mitigations</span></p>
+      <p><span style="color: #dc2626;">✗ Few specific and non-binding details provided for security measures, to be implemented once the "high" risk level is reached</span></p>
+      <p><span style="color: #dc2626;">✗ Virtually no specific details for deployment measures</span></p>
+      <p><span style="color: #dc2626;">✗ Deployment mitigations are not connected to specific risk thresholds</span></p>
     `,
     'halting-procedures': `
       <p><span style="color: #16a34a;">✓ Includes both deployment and development halting procedures</span></p>
@@ -387,7 +387,7 @@ export const companyDescriptions: Record<string, string> = {
   microsoft: "Microsoft has released a Frontier Governance Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework.pdf\">1</a></sup> that includes a commitment to conduct risk evaluation every six months and for all models over 10^26 FLOPs, as well as a set of tiered risk levels for CBRN, cybersecurity, and model autonomy risks. They provide an abstract set of mitigations that they will use to ensure the risk thresholds are not breached, but specific mitigation standards are not connected to each threshold. They do commit to pause development and deployment if risk thresholds are exceeded without adequate mitigations in place.",
   mistral: "Mistral AI has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   naver: "Naver has implemented an AI Safety Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://clova.ai/en/tech-blog/en-navers-ai-safety-framework-asf\">1</a></sup> that includes regular risk assessments, categorization of risks into \"misuse\" and \"loss of control\" categories, and details about governance structure. They commit to evaluating frontier AI models every 3 months or upon 6x compute increases. Their policy describes no specific thresholds nor mitigations, but does include a commitment to halt when risk is deemed unacceptable.",
-  openai: "OpenAI's \"red line\" risk evaluation policy is known as their Preparedness Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn.openai.com/openai-preparedness-framework-beta.pdf\">1</a></sup>. It includes a commitment to conduct risk evaluations and monitor for tiered risk levels across four domains, and implement mitigations upon reaching those risk levels. However, they have also seemingly struggled to adhere to this framework on multiple occasions.",
+  openai: "OpenAI's \"red line\" risk evaluation policy is known as their Preparedness Framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://cdn.openai.com/openai-preparedness-framework-beta.pdf\">1</a></sup>. It includes a commitment to conduct risk evaluations for new models and at least every doubling in effective compute, and to monitor for reaching tiered risk thresholds across four domains. They commit to implement security mitigations upon reaching \"high\" risk levels, but provide few details about specific deployment mitigations. They have also seemingly struggled to adhere to this framework on multiple occasions.",
   samsung: "Samsung has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   tii: "Technology Innovation Institute has not publicly implemented a \"red line\" risk evaluation policy that meets the standards of the Seoul commitments.",
   xai: "xAI has released a draft of their risk management framework <sup><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://x.ai/documents/2025.02.10-RMF-Draft.pdf\">1</a></sup> which includes specific benchmarks that would represent unacceptable risk for malicious use and loss of control. It currently only provides examples of mitigations that will be implemented when those thresholds are reached, and doesn't include an affirmative commitment to pause further development or deployment when thresholds are reached.",
