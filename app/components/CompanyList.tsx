@@ -153,18 +153,6 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
     }
   }
 
-  const scrollAmount = 200 // Pixels to scroll per click
-
-  const handleScroll = (direction: 'up' | 'down') => {
-    if (scrollRef.current) {
-      const newScrollTop = scrollRef.current.scrollTop + (direction === 'up' ? -scrollAmount : scrollAmount)
-      scrollRef.current.scrollTo({
-        top: newScrollTop,
-        behavior: 'smooth'
-      })
-    }
-  }
-
   return (
     <motion.div 
       className="w-full max-w-xl mx-auto bg-white/95 backdrop-blur-md border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm"
@@ -179,19 +167,18 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
       <div className="relative flex-1">
         {canScrollUp && (
           <div
-            className="absolute top-0 left-0 right-0 h-8 z-10"
+            className="absolute top-0 left-0 right-0 h-8 z-10 pointer-events-none"
             style={{
               background: 'linear-gradient(to top, transparent, rgba(255,255,255,0.9))'
             }}
           >
-            <motion.button
-              className="absolute left-1/2 -translate-x-1/2 top-1 cursor-pointer hover:text-gray-600 transition-colors"
+            <motion.div
+              className="absolute left-1/2 -translate-x-1/2 top-1"
               variants={arrowVariants}
               animate="bounce"
-              onClick={() => handleScroll('up')}
             >
               <ChevronUp size={20} className="text-gray-400" />
-            </motion.button>
+            </motion.div>
           </div>
         )}
 
@@ -258,19 +245,18 @@ export default function CompanyList({ companies, selectedCompany, onSelectCompan
 
         {canScrollDown && (
           <div
-            className="absolute bottom-0 left-0 right-0 h-8 z-10"
+            className="absolute bottom-0 left-0 right-0 h-8 z-10 pointer-events-none"
             style={{
               background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.9))'
             }}
           >
-            <motion.button
-              className="absolute left-1/2 -translate-x-1/2 bottom-1 cursor-pointer hover:text-gray-600 transition-colors"
+            <motion.div
+              className="absolute left-1/2 -translate-x-1/2 bottom-1"
               variants={arrowVariants}
               animate="bounce"
-              onClick={() => handleScroll('down')}
             >
               <ChevronDown size={20} className="text-gray-400" />
-            </motion.button>
+            </motion.div>
           </div>
         )}
       </div>

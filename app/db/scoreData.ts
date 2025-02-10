@@ -98,7 +98,7 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     'risk-evaluations': `
       <p><span style="color: #16a34a;">✓ Shares plans to conduct comprehensive risk assessments before launching new models</span></p>
       <p><span style="color: #dc2626;">✗ Commits to no frequency for risk evaluation</span></p>
-      <p><span style="color: #dc2626;">✗ Largely ignores catastrophic risks </span></p>
+      <p><span style="color: #dc2626;">✗ Largely ignores catastrophic risks</span></p>
     `,
     'risk-thresholds': `
       <p><span style="color: #dc2626;">✗ Describes categories of risk in the abstract, but does not specify clear evaluation results or misuse potential that indicate an unacceptable level of risk</span></p>
@@ -198,12 +198,12 @@ export const dimensionDescriptions: Record<string, Record<string, string>> = {
     `,
     'risk-thresholds': `
       <p><span style="color: #16a34a;">✓ Has defined "outcome criteria" for CBRN and Cyber risks</span></p>
-      <p><span style="color: #dc2626;">✗ Defines tiered risk levels, but does not conect them to outcome criteria</span></p>
+      <p><span style="color: #dc2626;">✗ Defines tiered risk levels, but does not connect them to outcome criteria</span></p>
       <p><span style="color: #dc2626;">✗ Current outcome criteria are described in abstract terms</span></p>
       <p><span style="color: #dc2626;">✗ The bar for outcome criteria are set very high</span></p>
     `,
     'risk-mitigations': `
-      <p><span style="color: #dc2626;">✗ No specific mitigations are decsribed in their Frontier AI Framework.</span></p>
+      <p><span style="color: #dc2626;">✗ No specific mitigations are described in their Frontier AI Framework.</span></p>
       <p><span style="color: #dc2626;">✗ Their policy says they will only adhere to security measures \"insofar as is technically feasible and commercially practicable,\" practically meaning they can implement as little as they please </span></p>
     `,
     'halting-procedures': `
