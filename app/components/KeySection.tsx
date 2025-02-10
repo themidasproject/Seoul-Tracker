@@ -17,7 +17,7 @@ const riskCategories = [
   {
     id: 'risk-mitigations',
     name: 'Risk Mitigations',
-    description: 'Companies must "articulate how risk mitigations will be identified and implemented, including safety and security-related risk mitigations." These mitigations include: (1) modification of system behaviors, and (2) robust security controls for unreleased model weights.'
+    description: 'Companies must "articulate how risk mitigations will be identified and implemented, including safety and security-related risk mitigations." These mitigations include: (1) modification of system behaviors and (2) robust security controls for unreleased model weights.'
   },
   {
     id: 'halting-procedures',
@@ -27,7 +27,7 @@ const riskCategories = [
   {
     id: 'safety-investment',
     name: 'Safety Investment',
-    description: 'Companies must "continually invest in advancing their ability to implement commitments 1-4, including risk assessment and identification, thresholds definition, and mitigation effectiveness." This requires: (1) continuous monitoring of mitigation adequacy, (2) identification of new mitigations, and (3) incorporation of emerging best practices, international standards, and science on AI risk identification, assessment, and mitigations.'
+    description: 'Companies must "continually invest in advancing their ability to implement commitments 1 – 4, including risk assessment and identification, thresholds definition, and mitigation effectiveness." This requires: (1) continuous monitoring of mitigation adequacy, (2) identification of new mitigations, and (3) incorporation of emerging best practices, international standards, and science on AI risk identification, assessment, and mitigations.'
   }
 ]
 
@@ -75,7 +75,7 @@ export default function KeySection() {
                   This tracker monitors implementation of the <a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener noreferrer">Frontier AI Safety Commitments</a> made at the 2024 AI Safety Summit in Seoul. The five categories below correspond directly to the five components of Outcome 1 as described in the commitment document. These commitments represent public promises made by leading AI companies to world governments and the global community, establishing expectations for transparency and responsible development of frontier AI systems.
                 </p>
                 <p className="text-gray-600 leading-relaxed [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
-                  In February 2025, four new companies joined the list of companies that have publicly committed to the Seoul commitments: Magic, Minimax, 01.ai, and Nvidia. They have not yet been added to this tracker to ensure they have adequete time to produce a compliant risk assessment policy.
+                  In February 2025, four new companies joined the list of companies that have publicly committed to the Seoul commitments: Magic, Minimax, 01.ai, and Nvidia. They have not yet been added to this tracker to ensure they have adequate time to produce a compliant risk assessment policy.
                 </p>
               </div>
 
@@ -127,11 +127,6 @@ export default function KeySection() {
                   </ul>
                 </div>
               </div>
-
-              {/* Footer Note */}
-              <p className="text-xs text-gray-500 italic [&_a]:text-[#63b3ed] [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity">
-                The Seoul Commitment Tracker is a report from The Midas Project, a watchdog AI safety organization. To get in touch, <a href='https://www.themidasproject.com/contact' target="_blank" rel="noopener noreferrer">contact us via our website</a>.
-              </p>
             </div>
           </motion.div>
         )}
